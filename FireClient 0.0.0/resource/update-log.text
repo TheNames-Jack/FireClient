@@ -1,0 +1,8 @@
+FireHack 0.0.0:
+- Added elytra and fireworks
+- Added crafting recipe for cobweb: 9x string for cobweb
+- Added crafting recipe for sponge: 9x cobweb for sponge
+- Remove coords from debug menu, use compass for coords
+- Added multiplayer skin and cape support
+- Added sponge functionality
+- Added smelting rotten flesh into leather
