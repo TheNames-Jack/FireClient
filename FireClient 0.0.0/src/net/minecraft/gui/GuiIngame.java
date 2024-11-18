@@ -99,7 +99,7 @@ public class GuiIngame extends Gui {
 			int foodLevel = foodstats.getFoodLevel();
 			int previousFoodLevel = foodstats.getPrevFoodLevel();
 			RenderBossBar();
-			if(mc.thePlayer.playerLevel > 0) {
+			if(mc.thePlayer.playerLevel > 0 && mc.playerController.isInCreativeMode()) {
 				int xpBarX = k / 2 - 91;
 				int xpBarCap = mc.thePlayer.xpBarCap();
 				if(xpBarCap > 0) {

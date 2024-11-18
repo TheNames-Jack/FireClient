@@ -921,14 +921,12 @@ public class World implements IBlockAccess {
 		for(int i = 0; i < worldAccesses.size(); i++) {
 			((IWorldAccess) worldAccesses.get(i)).playSound(s, entity.posX, entity.posY - (double) entity.yOffset, entity.posZ, f, f1);
 		}
-
 	}
 
 	public void playSoundEffect(double d, double d1, double d2, String s, float f, float f1) {
 		for(int i = 0; i < worldAccesses.size(); i++) {
 			((IWorldAccess) worldAccesses.get(i)).playSound(s, d, d1, d2, f, f1);
 		}
-
 	}
 
 	public void playRecord(String s, int i, int j, int k) {

@@ -74,6 +74,7 @@ public class EntityPlayerSP extends EntityPlayer {
 				setSprinting(false);
 			}
 		}
+		
 		if(sprintToggleTimer > 0) {
 			sprintToggleTimer--;
 		}

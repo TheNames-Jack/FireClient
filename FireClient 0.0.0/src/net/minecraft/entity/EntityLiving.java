@@ -89,9 +89,6 @@ public abstract class EntityLiving extends Entity {
 	protected int numTicksToChaseTarget;
 	public boolean canUseElytra = false;
 	public boolean elytraToggled = false;
-	public float rotateElytraX;
-	public float rotateElytraY;
-	public float rotateElytraZ;
 	public int ticksElytraFlying;
 
 	public EntityLiving(World world) {
@@ -642,7 +639,7 @@ public abstract class EntityLiving extends Entity {
 			motionZ *= 0.99D;
 			moveEntity(motionX, motionY, motionZ);
 			// Collision check
-			if(isCollidedHorizontally && worldObj.multiplayerWorld) {
+			if(isCollidedHorizontally && !worldObj.multiplayerWorld) {
 				double impactSpeed = Math.sqrt(motionX * motionX + motionZ * motionZ);
 				double impactForce = currentSpeed - impactSpeed;
 				float damage = (float) (impactForce * 10.0D - 3.0D);
@@ -1217,7 +1214,7 @@ public abstract class EntityLiving extends Entity {
 		return EnumCreatureAttribute.UNDEFINED;
 	}
 
-	public void func_41005_b(ItemStack itemstack) {
+	public void doItemBreak(ItemStack itemstack) {
 		worldObj.playSoundAtEntity(this, "random.break", 0.8F, 0.8F + worldObj.rand.nextFloat() * 0.4F);
 		for(int i = 0; i < 5; i++) {
 			Vec3D vec3d = Vec3D.createVector(((double) rand.nextFloat() - 0.5D) * 0.10000000000000001D, Math.random() * 0.10000000000000001D + 0.10000000000000001D, 0.0D);
@@ -1229,6 +1226,5 @@ public abstract class EntityLiving extends Entity {
 			vec3d1 = vec3d1.addVector(posX, posY + (double) getEyeHeight(), posZ);
 			worldObj.spawnParticle((new StringBuilder()).append("iconcrack_").append(itemstack.getItem().id).toString(), vec3d1.xCoord, vec3d1.yCoord, vec3d1.zCoord, vec3d.xCoord, vec3d.yCoord + 0.050000000000000003D, vec3d.zCoord);
 		}
-
 	}
 }

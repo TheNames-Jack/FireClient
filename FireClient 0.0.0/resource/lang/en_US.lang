@@ -852,6 +852,7 @@ potion.potency.0=
 potion.potency.1=II
 potion.potency.2=III
 potion.potency.3=IV
+potion.potency.4=V
 
 potion.prefix.grenade=Splash
 potion.prefix.mundane=Mundane

@@ -55,9 +55,12 @@ public class RenderPlayer extends RenderLiving {
 				setRenderPassModel(modelbiped);
 				return !itemstack.isItemEnchanted() ? 1 : 15;
 			}else if(item instanceof ItemElytra) {
-				if(!loadDownloadableImageTexture(entityplayer.playerCapeURL, null)) {
-					loadTexture((new StringBuilder()).append("/armor/elytra.png").toString());
-				}
+				// For dynamic elytra textures
+//				if(!loadDownloadableImageTexture(entityplayer.playerCapeURL, null)) {
+//					
+//				}
+				// END
+				loadTexture((new StringBuilder()).append("/armor/elytra.png").toString());
 				ModelElytra modelElytra = this.modelElytra;
 				modelElytra.showElytra = i == 1 || i == 2;
 				setRenderPassModel(modelElytra);

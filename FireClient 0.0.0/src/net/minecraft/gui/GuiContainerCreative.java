@@ -27,12 +27,6 @@ public class GuiContainerCreative extends GuiContainer {
 		ySize = 208;
 	}
 
-	public void updateScreen() {
-		if(!mc.playerController.isInCreativeMode()) {
-			mc.displayGuiScreen(new GuiInventory(mc.thePlayer));
-		}
-	}
-
 	// Method Name: handleMouseClick
 	protected void func_35309_a(Slot slot, int i, int j, boolean flag) {
 		if(slot != null) {
@@ -89,12 +83,8 @@ public class GuiContainerCreative extends GuiContainer {
 	}
 
 	public void initGui() {
-		if(!mc.playerController.isInCreativeMode()) {
-			mc.displayGuiScreen(new GuiInventory(mc.thePlayer));
-		}else {
-			super.initGui();
-			controlList.clear();
-		}
+		super.initGui();
+		controlList.clear();
 	}
 
 	protected void drawGuiContainerForegroundLayer() {

@@ -168,7 +168,7 @@ public final class ItemStack {
 		}
 		itemDamage += i;
 		if(itemDamage > getMaxDamage()) {
-			entityliving.func_41005_b(this);
+			entityliving.doItemBreak(this);
 			if(entityliving instanceof EntityPlayer) {
 				((EntityPlayer) entityliving).addStat(StatList.objectBreakStats[itemID], 1);
 			}

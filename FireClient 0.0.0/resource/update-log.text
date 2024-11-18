@@ -1,4 +1,4 @@
-FireHack 0.0.0:
+FireHack 0.0.0 - Push1:
 - Added elytra and fireworks
 - Added crafting recipe for cobweb: 9x string for cobweb
 - Added crafting recipe for sponge: 9x cobweb for sponge
@@ -6,3 +6,7 @@ FireHack 0.0.0:
 - Added multiplayer skin and cape support
 - Added sponge functionality
 - Added smelting rotten flesh into leather
+
+FireHack 0.0.0 - Push2:
+- Fixed fireworks for server-side
+- Changed dynamic elytra movement to static due to desynchronization for clients

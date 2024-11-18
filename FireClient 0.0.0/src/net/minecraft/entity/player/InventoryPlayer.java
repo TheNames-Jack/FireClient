@@ -147,19 +147,17 @@ public class InventoryPlayer implements IInventory {
 		}
 	}
 	
-	public void DamageArmorSlotUpdate(EntityPlayer player, int armorSlot, int ticksExisted, int rateInSeconds, int damageAmount) {
-		int elytraDamage = 0;
+	// Damage given armor slot in given amount of seconds; To be used in update entity update methods
+	public void damageArmorSlotUpdate(EntityPlayer player, int armorSlot, int ticksExisted, int rateInSeconds, int damageAmount) {
 		if((ticksExisted % (rateInSeconds * 20)) * 12 == 0) {
-			if(armorItemInSlot(armorSlot).getItemDamage() != 0) {
-				elytraDamage = armorItemInSlot(armorSlot).getItemDamage();
-			}
-			armorItemInSlot(armorSlot).damageItem(damageAmount, player);
-			if(elytraDamage > 0 && armorItemInSlot(armorSlot).getItemDamage() == 0) {
+			armorInventory[armorSlot].damageItem(damageAmount, player);
+			if(armorInventory[armorSlot].stackSize == 0) {
+				armorInventory[armorSlot].onItemDestroyedByUse(player);
 				armorInventory[armorSlot] = null;
-				player.canUseElytra = false;
 			}
 		}
 	}
+	// END
 
 	public boolean consumeInventoryItem(int i) {
 		int j = getInventorySlotContainItem(i);

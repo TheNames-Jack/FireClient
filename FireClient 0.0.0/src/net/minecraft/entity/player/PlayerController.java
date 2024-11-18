@@ -1,7 +1,3 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode fieldsfirst 
-
 package net.minecraft.entity.player;
 
 import net.minecraft.block.Block;
@@ -12,13 +8,7 @@ import net.minecraft.entity.EntityPlayerSP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-// Referenced classes of package net.minecraft.src:
-//            Block, World, ItemStack, EntityPlayer, 
-//            InventoryPlayer, PlayerControllerCreative, EntityPlayerSP, WorldProvider, 
-//            Container, Entity
-
 public abstract class PlayerController {
-
 	protected final Minecraft mc;
 	public boolean isInTestMode;
 

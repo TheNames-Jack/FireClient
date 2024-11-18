@@ -10,6 +10,8 @@ public class ItemAppleGold extends ItemFood {
 	public boolean hasEffect(ItemStack itemstack) {
 		return true;
 	}
+	
+	
 
 	public EnumRarity getRarity(ItemStack itemstack) {
 		return EnumRarity.epic;

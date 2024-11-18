@@ -11,6 +11,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.IInventory;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.entity.player.PlayerCapabilities;
+import net.minecraft.entity.player.PlayerController;
 import net.minecraft.gui.container.Container;
 import net.minecraft.gui.container.ContainerPlayer;
 import net.minecraft.item.Item;
@@ -340,15 +341,22 @@ public abstract class EntityPlayer extends EntityLiving {
 		if(flyToggleTimer > 0) {
 			flyToggleTimer--;
 		}
+		
 		if(worldObj.difficultySetting == 0 && getEntityHealth() < getMaxHealth() && (ticksExisted % 20) * 12 == 0) {
 			heal(1);
 		}
 		
-		//Damage Elytra per tick
-		if(isUsingElytra() && inventory.armorItemInSlot(2) != null && inventory.armorItemInSlot(2).itemID == ItemElytra.ELYTRA.id) {
-			inventory.DamageArmorSlotUpdate(this, 2, ticksExisted, 1, 1);
+		if(!abilities.isFlying && !onGround && inventory.armorItemInSlot(2) != null && inventory.armorItemInSlot(2).itemID == Item.ELYTRA.id) {
+			canUseElytra = true;
+		}else {
+			canUseElytra = false;
 		}
-		//END
+		
+		// Damage Elytra per given tick if player is flying and wearing them
+		if(!worldObj.multiplayerWorld && isUsingElytra() && inventory.armorItemInSlot(2) != null && inventory.armorItemInSlot(2).itemID == ItemElytra.ELYTRA.id) {
+			inventory.damageArmorSlotUpdate(this, 2, ticksExisted, 1, 256);
+		}
+		// END
 		
 		inventory.decrementAnimations();
 		prevCameraYaw = cameraYaw;
@@ -992,9 +1000,6 @@ public abstract class EntityPlayer extends EntityLiving {
 		double prevX = posX;
 		double prevY = posY;
 		double prevZ = posZ;
-		if(!abilities.isFlying && !onGround && inventory.armorItemInSlot(2) != null && inventory.armorItemInSlot(2).itemID == Item.ELYTRA.id) {
-			canUseElytra = true;
-		}
 		if(abilities.isFlying) {
 			double prevMotionY = motionY;
 			float originalJumpFactor = jumpMovementFactor;

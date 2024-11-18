@@ -172,5 +172,4 @@ public class Vec3D {
 		yCoord = d1;
 		zCoord = d2;
 	}
-
 }
