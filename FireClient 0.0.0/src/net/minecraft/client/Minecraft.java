@@ -23,8 +23,10 @@ import org.lwjgl.util.glu.GLU;
 
 import net.minecraft.achievement.AchievementList;
 import net.minecraft.block.Block;
+import net.minecraft.block.enchantmenttable.Enchantment;
 import net.minecraft.client.network.NetClientHandler;
 import net.minecraft.entity.EntityClientPlayerMP;
+import net.minecraft.entity.EntityEnderCrystal;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.EntityPlayerSP;

@@ -213,7 +213,7 @@ public abstract class EntityLiving extends Entity {
 			heartsLife--;
 		}
 		if(health <= 0) {
-			func_40120_m_();
+			onDeathUpdate();
 		}
 		if(field_34905_c > 0) {
 			field_34905_c--;
@@ -228,7 +228,7 @@ public abstract class EntityLiving extends Entity {
 		Profiler.endSection();
 	}
 
-	protected void func_40120_m_() {
+	protected void onDeathUpdate() {
 		deathTime++;
 		if(deathTime == 20) {
 			if(!worldObj.multiplayerWorld && (field_34905_c > 0 || func_35163_av()) && !func_40127_l()) {

@@ -47,7 +47,7 @@ public class Item {
 	public static Item STONE_SHOVEL = (new ItemSpade(17, EnumToolMaterial.STONE)).setIconCoord(1, 5).setItemName("shovelStone");
 	public static Item STONE_PICKAXE = (new ItemPickaxe(18, EnumToolMaterial.STONE)).setIconCoord(1, 6).setItemName("pickaxeStone");
 	public static Item STONE_AXE = (new ItemAxe(19, EnumToolMaterial.STONE)).setIconCoord(1, 7).setItemName("hatchetStone");
-	public static Item DIMAOND_SWORD = (new ItemSword(20, EnumToolMaterial.EMERALD)).setIconCoord(3, 4).setItemName("swordDiamond");
+	public static Item DIAMOND_SWORD = (new ItemSword(20, EnumToolMaterial.EMERALD)).setIconCoord(3, 4).setItemName("swordDiamond");
 	public static Item DIAMOND_SHOVEL = (new ItemSpade(21, EnumToolMaterial.EMERALD)).setIconCoord(3, 5).setItemName("shovelDiamond");
 	public static Item DIAMOND_PICKAXE = (new ItemPickaxe(22, EnumToolMaterial.EMERALD)).setIconCoord(3, 6).setItemName("pickaxeDiamond");
 	public static Item DIAMOND_AXE = (new ItemAxe(23, EnumToolMaterial.EMERALD)).setIconCoord(3, 7).setItemName("hatchetDiamond");
@@ -156,6 +156,7 @@ public class Item {
 	public static Item SPECKLED_MELON = (new Item(126)).setIconCoord(9, 8).setItemName("speckledMelon").setPotionEffect(PotionHelper.field_40361_f);
 	public static Item ELYTRA = (new ItemElytra(127, EnumArmorMaterial.ELYTRA, 5, 1)).setIconCoord(6, 6).setItemName("elytra");
 	public static Item FIREWORK = (new ItemFirework(128)).setIconCoord(6, 7).setItemName("firework");
+	public static Item ENDER_CRYSTAL = (new ItemEnderCrystal(129).setIconCoord(6, 8).setItemName("endCrystal"));
 	public static Item DISC_13 = (new ItemDisc(2000, "13")).setIconCoord(0, 15).setItemName("record");
 	public static Item DISC_CAT = (new ItemDisc(2001, "cat")).setIconCoord(1, 15).setItemName("record");
 	public static Item DISC_BLOCKS = (new ItemDisc(2002, "blocks")).setIconCoord(2, 15).setItemName("record");

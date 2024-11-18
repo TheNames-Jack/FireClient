@@ -38,8 +38,8 @@ public class RenderDragon extends RenderLiving {
 	}
 
 	protected void func_40280_a(EntityEnderdragon entitydragon, float f, float f1, float f2, float f3, float f4, float f5) {
-		if(entitydragon.field_40178_aA > 0) {
-			float f6 = (float) entitydragon.field_40178_aA / 200F;
+		if(entitydragon.deathUpdateTimer > 0) {
+			float f6 = (float) entitydragon.deathUpdateTimer / 200F;
 			GL11.glDepthFunc(515);
 			GL11.glEnable(3008 /* GL_ALPHA_TEST */);
 			GL11.glAlphaFunc(516, f6);
@@ -113,9 +113,9 @@ public class RenderDragon extends RenderLiving {
 	protected void func_40279_a(EntityEnderdragon entitydragon, float f) {
 		super.renderEquippedItems(entitydragon, f);
 		Tessellator tessellator = Tessellator.instance;
-		if(entitydragon.field_40178_aA > 0) {
+		if(entitydragon.deathUpdateTimer > 0) {
 			RenderHelper.disableStandardItemLighting();
-			float f1 = ((float) entitydragon.field_40178_aA + f) / 200F;
+			float f1 = ((float) entitydragon.deathUpdateTimer + f) / 200F;
 			float f2 = 0.0F;
 			if(f1 > 0.8F) {
 				f2 = (f1 - 0.8F) / 0.2F;

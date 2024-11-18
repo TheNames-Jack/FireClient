@@ -354,7 +354,7 @@ public abstract class EntityPlayer extends EntityLiving {
 		
 		// Damage Elytra per given tick if player is flying and wearing them
 		if(!worldObj.multiplayerWorld && isUsingElytra() && inventory.armorItemInSlot(2) != null && inventory.armorItemInSlot(2).itemID == ItemElytra.ELYTRA.id) {
-			inventory.damageArmorSlotUpdate(this, 2, ticksExisted, 1, 256);
+			inventory.damageArmorSlotUpdate(this, 2, ticksExisted, 1, 1);
 		}
 		// END
 		

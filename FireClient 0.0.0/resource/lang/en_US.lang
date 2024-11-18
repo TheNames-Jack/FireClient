@@ -739,6 +739,8 @@ item.elytra.name=Elytra
 item.elytra.desc=
 item.firework.name=Firework
 item.firework.desc=
+item.endCrystal.name=End Crystal
+item.endCrystal.decs=
 
 entity.Item.name=Item
 entity.XPOrb.name=Experience Orb
@@ -798,6 +800,7 @@ death.arrow=%1$s was shot by %2$s
 death.fireball=%1$s was fireballed by %2$s
 death.thrown=%1$s was pummeled by %2$s
 death.indirectMagic=%1$s was killed by %2$s
+death.flyIntoWall=%1$s flew into a wall
 
 deathScreen.respawn=Respawn
 deathScreen.deleteWorld=Delete world

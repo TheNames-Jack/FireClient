@@ -34,7 +34,7 @@ public class EntityEnderdragon extends EntityDragonBase {
 	public boolean field_40163_ay;
 	public boolean field_40161_az;
 	private Entity field_40179_aC;
-	public int field_40178_aA;
+	public int deathUpdateTimer;
 	public EntityEnderCrystal field_41013_bH;
 
 	public EntityEnderdragon(World world) {
@@ -45,7 +45,7 @@ public class EntityEnderdragon extends EntityDragonBase {
 		field_40172_ax = 0.0F;
 		field_40163_ay = false;
 		field_40161_az = false;
-		field_40178_aA = 0;
+		deathUpdateTimer = 0;
 		field_41013_bH = null;
 		field_40176_ao = (new DragonPart[]{
 				field_40177_ap = new DragonPart(this, "head", 6F, 6F), field_40171_aq = new DragonPart(this, "body", 8F, 8F), field_40170_ar = new DragonPart(this, "tail", 4F, 4F), field_40169_as = new DragonPart(this, "tail", 4F, 4F),
@@ -60,7 +60,7 @@ public class EntityEnderdragon extends EntityDragonBase {
 		field_40165_b = 100D;
 		ignoreFrustumCheck = true;
 	}
-	
+
 	protected void entityInit() {
 		super.entityInit();
 		dataWatcher.addObject(16, new Integer(maxHealth));
@@ -89,6 +89,9 @@ public class EntityEnderdragon extends EntityDragonBase {
 	}
 
 	public void onLivingUpdate() {
+		// TODO TESTING
+//		health = 0;
+
 		field_40173_aw = field_40172_ax;
 		if(!worldObj.multiplayerWorld) {
 			dataWatcher.updateObject(16, Integer.valueOf(health));
@@ -432,31 +435,30 @@ public class EntityEnderdragon extends EntityDragonBase {
 		return true;
 	}
 
-	protected void func_40120_m_() {
-		field_40178_aA++;
-		if(field_40178_aA >= 180 && field_40178_aA <= 200) {
+	protected void onDeathUpdate() {
+		deathUpdateTimer++;
+		if(deathUpdateTimer >= 180 && deathUpdateTimer <= 200) {
 			float f = (rand.nextFloat() - 0.5F) * 8F;
 			float f1 = (rand.nextFloat() - 0.5F) * 4F;
 			float f2 = (rand.nextFloat() - 0.5F) * 8F;
 			worldObj.spawnParticle("hugeexplosion", posX + (double) f, posY + 2D + (double) f1, posZ + (double) f2, 0.0D, 0.0D, 0.0D);
 		}
-		if(!worldObj.multiplayerWorld && field_40178_aA > 150 && field_40178_aA % 5 == 0) {
+		if(!worldObj.multiplayerWorld && deathUpdateTimer > 150 && deathUpdateTimer % 5 == 0) {
 			for(int i = 1000; i > 0;) {
 				int k = EntityXPOrb.getXPSplit(i);
 				i -= k;
 				worldObj.entityJoinedWorld(new EntityXPOrb(worldObj, posX, posY, posZ, k));
 			}
-
 		}
 		moveEntity(0.0D, 0.10000000149011612D, 0.0D);
 		renderYawOffset = rotationYaw += 20F;
-		if(field_40178_aA == 200) {
+		// TODO CHANGE BACK LATER
+		if(deathUpdateTimer == 10) {
 			for(int j = 10000; j > 0;) {
 				int l = EntityXPOrb.getXPSplit(j);
 				j -= l;
 				worldObj.entityJoinedWorld(new EntityXPOrb(worldObj, posX, posY, posZ, l));
 			}
-
 			int i1 = (5 + rand.nextInt(2) * 2) - 1;
 			int j1 = (5 + rand.nextInt(2) * 2) - 1;
 			if(rand.nextInt(2) == 0) {
@@ -464,55 +466,56 @@ public class EntityEnderdragon extends EntityDragonBase {
 			}else {
 				j1 = 0;
 			}
-			func_41012_a(MathHelper.floor_double(posX), MathHelper.floor_double(posZ));
+			setEndPortal();
 			onEntityDeath();
 			setEntityDead();
 		}
 	}
-
-	private void func_41012_a(int i, int j) {
-		int k = worldObj.worldYMax / 2;
+	
+	private void setEndPortal() {
+		int k = (worldObj.worldYMax / 2) - 2; // Lower the portal by 2 blocks
 		BlockEndPortal.field_41051_a = true;
-		int l = 4;
-		for(int i1 = k - 1; i1 <= k + 32; i1++) {
-			for(int j1 = i - l; j1 <= i + l; j1++) {
-				for(int k1 = j - l; k1 <= j + l; k1++) {
-					double d = j1 - i;
-					double d1 = k1 - j;
+		int l = 4; // Radius of the portal structure
+
+		for(int y = k - 1; y <= k + 32; y++) {
+			for(int x = -l; x <= l; x++) { // Center at X=0
+				for(int z = -l; z <= l; z++) { // Center at Z=0
+					double d = x;
+					double d1 = z;
 					double d2 = MathHelper.sqrt_double(d * d + d1 * d1);
+
 					if(d2 > (double) l - 0.5D) {
 						continue;
 					}
-					if(i1 < k) {
+					if(y < k) {
 						if(d2 <= (double) (l - 1) - 0.5D) {
-							worldObj.setBlockWithNotify(j1, i1, k1, Block.bedrock.blockID);
+							worldObj.setBlockWithNotify(x, y, z, Block.bedrock.blockID);
 						}
 						continue;
 					}
-					if(i1 > k) {
-						worldObj.setBlockWithNotify(j1, i1, k1, 0);
+					if(y > k) {
+						worldObj.setBlockWithNotify(x, y, z, 0);
 						continue;
 					}
 					if(d2 > (double) (l - 1) - 0.5D) {
-						worldObj.setBlockWithNotify(j1, i1, k1, Block.bedrock.blockID);
+						worldObj.setBlockWithNotify(x, y, z, Block.bedrock.blockID);
 					}else {
-						worldObj.setBlockWithNotify(j1, i1, k1, Block.endPortal.blockID);
+						worldObj.setBlockWithNotify(x, y, z, Block.endPortal.blockID);
 					}
 				}
-
 			}
-
 		}
 
-		worldObj.setBlockWithNotify(i, k + 0, j, Block.bedrock.blockID);
-		worldObj.setBlockWithNotify(i, k + 1, j, Block.bedrock.blockID);
-		worldObj.setBlockWithNotify(i, k + 2, j, Block.bedrock.blockID);
-		worldObj.setBlockWithNotify(i - 1, k + 2, j, Block.torchWood.blockID);
-		worldObj.setBlockWithNotify(i + 1, k + 2, j, Block.torchWood.blockID);
-		worldObj.setBlockWithNotify(i, k + 2, j - 1, Block.torchWood.blockID);
-		worldObj.setBlockWithNotify(i, k + 2, j + 1, Block.torchWood.blockID);
-		worldObj.setBlockWithNotify(i, k + 3, j, Block.bedrock.blockID);
-		worldObj.setBlockWithNotify(i, k + 4, j, Block.field_41050_bK.blockID);
+		// Place the central bedrock column and decorations
+		worldObj.setBlockWithNotify(0, k + 0, 0, Block.bedrock.blockID);
+		worldObj.setBlockWithNotify(0, k + 1, 0, Block.bedrock.blockID);
+		worldObj.setBlockWithNotify(0, k + 2, 0, Block.bedrock.blockID);
+		worldObj.setBlockWithNotify(-1, k + 2, 0, Block.torchWood.blockID);
+		worldObj.setBlockWithNotify(1, k + 2, 0, Block.torchWood.blockID);
+		worldObj.setBlockWithNotify(0, k + 2, -1, Block.torchWood.blockID);
+		worldObj.setBlockWithNotify(0, k + 2, 1, Block.torchWood.blockID);
+		worldObj.setBlockWithNotify(0, k + 3, 0, Block.bedrock.blockID);
+		worldObj.setBlockWithNotify(0, k + 4, 0, Block.field_41050_bK.blockID); // Dragon egg block
 		BlockEndPortal.field_41051_a = false;
 	}
 

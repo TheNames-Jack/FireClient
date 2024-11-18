@@ -425,8 +425,8 @@ public class GuiIngame extends Gui {
 		if(k > 0) {
 			drawTexturedModalRect(j, byte0, 0, 79, k, 5);
 		}
-		String s = "EnderDrgaon Health";
-		fontrenderer.drawStringWithShadow(s, i / 2 - fontrenderer.getStringWidth(s) / 2, byte0 - 10, 0xff00ff);
+		String enderDrgaonHealth = "EnderDrgaon";
+		fontrenderer.drawStringWithShadow(enderDrgaonHealth, i / 2 - fontrenderer.getStringWidth(enderDrgaonHealth) / 2, byte0 - 10, 0xff00ff);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glBindTexture(3553 /* GL_TEXTURE_2D */, mc.renderEngine.getTexture("/gui/icons.png"));
 	}

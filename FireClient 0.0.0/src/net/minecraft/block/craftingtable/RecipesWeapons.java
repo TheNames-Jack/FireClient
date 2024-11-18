@@ -27,7 +27,7 @@ public class RecipesWeapons
             new Object[] {
                 Block.planks, Block.cobblestone, Item.IRON_INGOT, Item.DIAMOND, Item.GOLD_NUGGET
             }, new Object[] {
-                Item.WOODEN_SWORD, Item.STONE_SWORD, Item.IRON_SWORD, Item.DIMAOND_SWORD, Item.swordGold
+                Item.WOODEN_SWORD, Item.STONE_SWORD, Item.IRON_SWORD, Item.DIAMOND_SWORD, Item.swordGold
             }
         });
     }

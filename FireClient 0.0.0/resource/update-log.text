@@ -10,3 +10,7 @@ FireHack 0.0.0 - Push1:
 FireHack 0.0.0 - Push2:
 - Fixed fireworks for server-side
 - Changed dynamic elytra movement to static due to desynchronization for clients
+
+FireHack 0.0.0 - Push2:
+- Added end crystals
+- Made the bedrock end portal base spawn during generation

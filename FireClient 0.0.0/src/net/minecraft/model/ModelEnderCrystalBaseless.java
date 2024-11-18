@@ -4,25 +4,21 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.entity.Entity;
 
-public class ModelEnderCrystal extends ModelBase {
+public class ModelEnderCrystalBaseless extends ModelBase {
 	public ModelRenderer crystal;
 	public ModelRenderer glass;
-	public ModelRenderer bedrockBase;
 
-	public ModelEnderCrystal(float f) {
+	public ModelEnderCrystalBaseless(float f) {
 		glass = new ModelRenderer(this, "glass");
 		glass.setTextureOffset(0, 0).addBox(-4F, -4F, -4F, 8, 8, 8);
 		crystal = new ModelRenderer(this, "cube");
 		crystal.setTextureOffset(32, 0).addBox(-4F, -4F, -4F, 8, 8, 8);
-		bedrockBase = new ModelRenderer(this, "base");
-		bedrockBase.setTextureOffset(0, 16).addBox(-6F, 0.0F, -6F, 12, 4, 12);
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		GL11.glPushMatrix();
 		GL11.glScalef(2.0F, 2.0F, 2.0F);
 		GL11.glTranslatef(0.0F, -0.5F, 0.0F);
-		bedrockBase.render(f5);
 		GL11.glRotatef(f1, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(0.0F, 0.8F + f2, 0.0F);
 		GL11.glRotatef(60F, 0.7071F, 0.0F, 0.7071F);

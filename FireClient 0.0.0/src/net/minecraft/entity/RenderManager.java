@@ -103,7 +103,8 @@ public class RenderManager {
 		entityRenderMap.put(net.minecraft.entity.EntityVillager.class, new RenderVillager());
 		entityRenderMap.put(net.minecraft.entity.EntityLiving.class, new RenderLiving(new ModelBiped(), 0.5F));
 		entityRenderMap.put(net.minecraft.entity.enderdragon.EntityEnderdragon.class, new RenderDragon());
-		entityRenderMap.put(net.minecraft.entity.EntityEnderCrystal.class, new RenderEnderCrystal());
+		entityRenderMap.put(net.minecraft.entity.EntityEnderCrystal.class, new RenderEnderCrystal(true));
+		entityRenderMap.put(net.minecraft.entity.EntityEnderCrystalBaseless.class, new RenderEnderCrystal(false));
 		entityRenderMap.put(net.minecraft.entity.Entity.class, new RenderEntity());
 		entityRenderMap.put(net.minecraft.entity.EntityPainting.class, new RenderPainting());
 		entityRenderMap.put(net.minecraft.entity.EntityArrow.class, new RenderArrow());
