@@ -4,7 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.enderdragon.EntityEnderdragon;
+import net.minecraft.entity.enderdragon.EntityEnderDragon;
 
 public class ModelDragon extends ModelBase {
 	private ModelRenderer head;
@@ -105,7 +105,7 @@ public class ModelDragon extends ModelBase {
 	
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
 		GL11.glPushMatrix();
-		EntityEnderdragon entitydragon = (EntityEnderdragon) entity;
+		EntityEnderDragon entitydragon = (EntityEnderDragon) entity;
 		float f6 = entitydragon.field_40173_aw + (entitydragon.field_40172_ax - entitydragon.field_40173_aw) * field_40317_s;
 		jaw.rotateAngleX = (float) (Math.sin(f6 * 3.141593F * 2.0F) + 1.0D) * 0.2F;
 		float f7 = (float) (Math.sin(f6 * 3.141593F * 2.0F - 1.0F) + 1.0D);

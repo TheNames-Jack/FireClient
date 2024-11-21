@@ -12,7 +12,7 @@ import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.TileEntity;
 import net.minecraft.entity.TileEntityFurnace;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class BlockFurnace extends BlockContainer {

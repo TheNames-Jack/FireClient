@@ -8,10 +8,10 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.SaveFormatComparator;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Tessellator;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            GuiSlot, GuiSelectWorld, GuiButton, SaveFormatComparator, 

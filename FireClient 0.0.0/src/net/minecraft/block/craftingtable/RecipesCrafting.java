@@ -24,10 +24,10 @@ public class RecipesCrafting {
 		craftingmanager.addRecipe(new ItemStack(Block.stoneBrick, 4), new Object[]{
 				"##", "##", Character.valueOf('#'), Block.stone
 		});
-		craftingmanager.addRecipe(new ItemStack(Block.fenceIron, 16), new Object[]{
+		craftingmanager.addRecipe(new ItemStack(Block.IRON_BARS, 16), new Object[]{
 				"###", "###", Character.valueOf('#'), Item.IRON_INGOT
 		});
-		craftingmanager.addRecipe(new ItemStack(Block.thinGlass, 16), new Object[]{
+		craftingmanager.addRecipe(new ItemStack(Block.GLASS_PANE, 16), new Object[]{
 				"###", "###", Character.valueOf('#'), Block.glass
 		});
 	}

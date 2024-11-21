@@ -7,7 +7,7 @@ package net.minecraft.model;
 import java.util.Random;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            ModelBase, ModelRenderer, MathHelper, Entity

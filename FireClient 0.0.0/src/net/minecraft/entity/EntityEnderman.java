@@ -8,8 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3D;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityEnderman extends EntityMob {
@@ -299,7 +299,7 @@ public class EntityEnderman extends EntityMob {
 		canCarryBlocks[Block.mushroomRed.blockID] = true;
 		canCarryBlocks[Block.tnt.blockID] = true;
 		canCarryBlocks[Block.cactus.blockID] = true;
-		canCarryBlocks[Block.blockClay.blockID] = true;
+		canCarryBlocks[Block.CLAY_BLOCK.blockID] = true;
 		canCarryBlocks[Block.pumpkin.blockID] = true;
 		canCarryBlocks[Block.melon.blockID] = true;
 		canCarryBlocks[Block.mycelium.blockID] = true;

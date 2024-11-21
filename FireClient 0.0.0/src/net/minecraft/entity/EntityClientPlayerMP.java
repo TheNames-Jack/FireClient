@@ -15,9 +15,9 @@ import net.minecraft.packet.Packet19EntityAction;
 import net.minecraft.packet.Packet3Chat;
 import net.minecraft.packet.Packet9Respawn;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Session;
 import net.minecraft.util.StatBase;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityClientPlayerMP extends EntityPlayerSP {

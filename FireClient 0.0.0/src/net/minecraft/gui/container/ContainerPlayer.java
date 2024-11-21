@@ -1,7 +1,3 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode fieldsfirst 
-
 package net.minecraft.gui.container;
 
 import net.minecraft.block.craftingtable.CraftingManager;
@@ -15,13 +11,7 @@ import net.minecraft.util.Slot;
 import net.minecraft.util.SlotArmor;
 import net.minecraft.util.SlotCrafting;
 
-// Referenced classes of package net.minecraft.src:
-//            Container, InventoryCrafting, InventoryCraftResult, SlotCrafting, 
-//            InventoryPlayer, Slot, SlotArmor, CraftingManager, 
-//            IInventory, EntityPlayer, ItemStack
-
 public class ContainerPlayer extends Container {
-
 	public InventoryCrafting craftMatrix;
 	public IInventory craftResult;
 	public boolean isSinglePlayer;

@@ -16,7 +16,7 @@ public class EntityDragonBase extends EntityLiving {
 		return maxHealth;
 	}
 
-	public boolean func_40156_a(DragonPart dragonpart, DamageSource damagesource, int i) {
+	public boolean shouldDamage(DragonPart dragonpart, DamageSource damagesource, int i) {
 		return attackEntityFrom(damagesource, i);
 	}
 

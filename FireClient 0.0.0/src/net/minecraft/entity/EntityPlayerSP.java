@@ -16,11 +16,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.potion.Potion;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MouseFilter;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.Session;
 import net.minecraft.util.StatBase;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityPlayerSP extends EntityPlayer {
@@ -78,7 +78,7 @@ public class EntityPlayerSP extends EntityPlayer {
 		if(sprintToggleTimer > 0) {
 			sprintToggleTimer--;
 		}
-		if(mc.playerController.func_35643_e()) {
+		if(mc.playerController.displayHUD()) {
 			posX = posZ = 0.5D;
 			posX = 0.0D;
 			posZ = 0.0D;

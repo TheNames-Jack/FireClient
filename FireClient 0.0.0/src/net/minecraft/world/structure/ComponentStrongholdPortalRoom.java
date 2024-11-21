@@ -66,13 +66,13 @@ public class ComponentStrongholdPortalRoom extends ComponentStronghold
         fillWithBlocks(world, structureboundingbox, 4, 1, 9, 6, 1, 11, Block.lavaMoving.blockID, Block.lavaMoving.blockID, false);
         for(int j = 3; j < 14; j += 2)
         {
-            fillWithBlocks(world, structureboundingbox, 0, 3, j, 0, 4, j, Block.fenceIron.blockID, Block.fenceIron.blockID, false);
-            fillWithBlocks(world, structureboundingbox, 10, 3, j, 10, 4, j, Block.fenceIron.blockID, Block.fenceIron.blockID, false);
+            fillWithBlocks(world, structureboundingbox, 0, 3, j, 0, 4, j, Block.IRON_BARS.blockID, Block.IRON_BARS.blockID, false);
+            fillWithBlocks(world, structureboundingbox, 10, 3, j, 10, 4, j, Block.IRON_BARS.blockID, Block.IRON_BARS.blockID, false);
         }
 
         for(int k = 2; k < 9; k += 2)
         {
-            fillWithBlocks(world, structureboundingbox, k, 3, 15, k, 4, 15, Block.fenceIron.blockID, Block.fenceIron.blockID, false);
+            fillWithBlocks(world, structureboundingbox, k, 3, 15, k, 4, 15, Block.IRON_BARS.blockID, Block.IRON_BARS.blockID, false);
         }
 
         int l = func_35009_c(Block.stairsStoneBrickSmooth.blockID, 3);

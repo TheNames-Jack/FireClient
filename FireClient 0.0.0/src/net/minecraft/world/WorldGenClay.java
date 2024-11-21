@@ -20,7 +20,7 @@ public class WorldGenClay extends WorldGenerator
 
     public WorldGenClay(int i)
     {
-        clayBlockId = Block.blockClay.blockID;
+        clayBlockId = Block.CLAY_BLOCK.blockID;
         numberOfBlocks = i;
     }
 
@@ -45,7 +45,7 @@ public class WorldGenClay extends WorldGenerator
                 for(int j2 = j - i1; j2 <= j + i1; j2++)
                 {
                     int k2 = world.getBlockId(j1, j2, k1);
-                    if(k2 == Block.dirt.blockID || k2 == Block.blockClay.blockID)
+                    if(k2 == Block.dirt.blockID || k2 == Block.CLAY_BLOCK.blockID)
                     {
                         world.setBlock(j1, j2, k1, clayBlockId);
                     }

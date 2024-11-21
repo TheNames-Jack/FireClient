@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldInfo;
 import net.minecraft.world.chunk.ChunkFile;
 import net.minecraft.world.chunk.ChunkFilePattern;

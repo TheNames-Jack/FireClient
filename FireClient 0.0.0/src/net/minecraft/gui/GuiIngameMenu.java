@@ -6,9 +6,9 @@ package net.minecraft.gui;
 
 import java.util.List;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StatList;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            GuiScreen, GuiButton, StatCollector, GuiOptions, 

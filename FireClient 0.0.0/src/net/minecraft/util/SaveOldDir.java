@@ -10,8 +10,8 @@ import java.util.List;
 import net.minecraft.world.WorldInfo;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldProviderEnd;
-import net.minecraft.world.WorldProviderHell;
 import net.minecraft.world.chunk.IChunkLoader;
+import net.minecraft.world.nether.WorldProviderHell;
 
 // Referenced classes of package net.minecraft.src:
 //            SaveHandler, WorldProviderHell, ThreadedChunkLoader, WorldProviderEnd, 

@@ -18,9 +18,9 @@ import net.minecraft.item.map.MapGenStronghold;
 import net.minecraft.item.map.MapGenVillage;
 import net.minecraft.util.EnumCreatureType;
 import net.minecraft.util.IProgressUpdate;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.NoiseGeneratorOctaves;
 import net.minecraft.util.SpawnerAnimals;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldChunkManager;
 import net.minecraft.world.WorldGenDungeons;
@@ -181,7 +181,7 @@ public class ChunkProviderGenerate
                     int i2 = (i1 * 16 + l) * worldObj.worldYMax + l1;
                     if(l1 <= 0 + rand.nextInt(5))
                     {
-                        abyte0[i2] = (byte)Block.bedrock.blockID;
+                        abyte0[i2] = (byte)Block.BEDROCK.blockID;
                         continue;
                     }
                     byte byte2 = abyte0[i2];

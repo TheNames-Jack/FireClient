@@ -13,8 +13,8 @@ import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.TileEntity;
 import net.minecraft.entity.TileEntityPiston;
 import net.minecraft.util.Facing;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:
@@ -346,7 +346,7 @@ public class BlockPistonBase extends Block
 
     private static boolean canPushBlock(int i, World world, int j, int k, int l, boolean flag)
     {
-        if(i == Block.obsidian.blockID)
+        if(i == Block.OBSIDIAN.blockID)
         {
             return false;
         }

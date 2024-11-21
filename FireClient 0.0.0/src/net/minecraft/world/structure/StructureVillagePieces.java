@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.item.map.MapGenVillage;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            StructureVillagePieceWeight, ComponentVillageHouse4_Garden, MathHelper, ComponentVillageChurch, 

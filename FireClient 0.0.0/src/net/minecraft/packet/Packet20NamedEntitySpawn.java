@@ -5,7 +5,7 @@ import java.io.*;
 import net.minecraft.client.network.NetHandler;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 public class Packet20NamedEntitySpawn extends Packet {
 	public int entityId;

@@ -7,9 +7,9 @@ package net.minecraft.entity;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.block.Block;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Render;
 import net.minecraft.util.Tessellator;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:
@@ -36,7 +36,7 @@ public class RenderFallingSand extends Render
         Block block = Block.blocksList[entityfallingsand.blockID];
         World world = entityfallingsand.getWorld();
         GL11.glDisable(2896 /*GL_LIGHTING*/);
-        if(block == Block.field_41050_bK)
+        if(block == Block.ENDER_DRAGON_EGG)
         {
             field_197_d.blockAccess = world;
             Tessellator tessellator = Tessellator.instance;

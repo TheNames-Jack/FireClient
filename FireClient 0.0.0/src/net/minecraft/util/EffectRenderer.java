@@ -12,6 +12,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDiggingFX;
 import net.minecraft.entity.EntityFX;
 import net.minecraft.entity.RenderEngine;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:

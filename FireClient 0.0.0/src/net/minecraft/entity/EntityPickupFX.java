@@ -6,9 +6,9 @@ package net.minecraft.entity;
 
 import org.lwjgl.opengl.GL11;
 
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.OpenGlHelper;
 import net.minecraft.util.Tessellator;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:

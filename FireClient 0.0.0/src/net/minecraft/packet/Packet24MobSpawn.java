@@ -11,7 +11,7 @@ import net.minecraft.client.network.NetHandler;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.DataWatcher;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            Packet, EntityLiving, EntityList, MathHelper, 

@@ -9,7 +9,7 @@ import java.io.*;
 import net.minecraft.client.network.NetHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLightningBolt;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            Packet, Entity, MathHelper, EntityLightningBolt, 

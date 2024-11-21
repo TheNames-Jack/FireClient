@@ -11,4 +11,9 @@ public class EntityEnderCrystalBaseless extends EntityEnderCrystal {
 		this(world);
 		setPosition(d, d1, d2);
 	}
+	
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+	}
 }

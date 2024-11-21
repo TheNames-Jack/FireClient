@@ -17,10 +17,10 @@ import net.minecraft.entity.RenderPlayer;
 import net.minecraft.item.map.MapData;
 import net.minecraft.item.map.MapItemRenderer;
 import net.minecraft.util.EnumAction;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.OpenGlHelper;
 import net.minecraft.util.Render;
 import net.minecraft.util.Tessellator;
+import net.minecraft.util.math.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 

@@ -8,7 +8,7 @@ import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            Block, MathHelper, Item, Material

@@ -79,12 +79,12 @@ public class AchievementList
         flyPig = (new Achievement(15, "flyPig", 8, -4, Item.SADDLE, killCow)).setSpecial().registerAchievement();
         snipeSkeleton = (new Achievement(16, "snipeSkeleton", 7, 0, Item.BOW, killEnemy)).setSpecial().registerAchievement();
         diamonds = (new Achievement(17, "diamonds", -1, 5, Item.DIAMOND, acquireIron)).registerAchievement();
-        portal = (new Achievement(18, "portal", -1, 7, Block.obsidian, diamonds)).registerAchievement();
+        portal = (new Achievement(18, "portal", -1, 7, Block.OBSIDIAN, diamonds)).registerAchievement();
         ghast = (new Achievement(19, "ghast", -4, 8, Item.GHAST_TEAR, portal)).setSpecial().registerAchievement();
         blazeRod = (new Achievement(20, "blazeRod", 0, 9, Item.BLAZE_ROD, portal)).registerAchievement();
         potion = (new Achievement(21, "potion", 2, 8, Item.POTION, blazeRod)).registerAchievement();
         theEnd = (new Achievement(22, "theEnd", 3, 10, Item.ENDER_EYE, blazeRod)).setSpecial().registerAchievement();
-        theEnd2 = (new Achievement(23, "theEnd2", 4, 13, Block.field_41050_bK, theEnd)).setSpecial().registerAchievement();
+        theEnd2 = (new Achievement(23, "theEnd2", 4, 13, Block.ENDER_DRAGON_EGG, theEnd)).setSpecial().registerAchievement();
         enchantments = (new Achievement(24, "enchantments", -4, 4, Block.enchantmentTable, diamonds)).registerAchievement();
         overkill = (new Achievement(25, "overkill", -4, 1, Item.DIAMOND_SWORD, enchantments)).setSpecial().registerAchievement();
         bookcase = (new Achievement(26, "bookcase", -3, 6, Block.bookShelf, enchantments)).registerAchievement();

@@ -25,7 +25,6 @@ import net.minecraft.util.EnumSkyBlock;
 import net.minecraft.util.Explosion;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.ISaveHandler;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.NextTickListEntry;
 import net.minecraft.util.PathEntity;
@@ -37,6 +36,7 @@ import net.minecraft.util.ThreadedFileIOBase;
 import net.minecraft.util.Vec3D;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkCache;
 import net.minecraft.world.chunk.ChunkCoordIntPair;
@@ -545,7 +545,6 @@ public class World implements IBlockAccess {
 		for(int l = 0; l < worldAccesses.size(); l++) {
 			((IWorldAccess) worldAccesses.get(l)).markBlockAndNeighborsNeedsUpdate(i, j, k);
 		}
-
 	}
 
 	protected void notifyBlockChange(int i, int j, int k, int l) {
@@ -933,7 +932,6 @@ public class World implements IBlockAccess {
 		for(int l = 0; l < worldAccesses.size(); l++) {
 			((IWorldAccess) worldAccesses.get(l)).playRecord(s, i, j, k);
 		}
-
 	}
 
 	public void spawnParticle(String s, double d, double d1, double d2, double d3, double d4, double d5) {
@@ -2325,7 +2323,7 @@ public class World implements IBlockAccess {
 		return field_1012_M;
 	}
 
-	public List getEntitiesWithinAABB(Class class1, AxisAlignedBB axisalignedbb) {
+	public List<Entity> getEntitiesWithinAABB(Class class1, AxisAlignedBB axisalignedbb) {
 		int i = MathHelper.floor_double((axisalignedbb.minX - 2D) / 16D);
 		int j = MathHelper.floor_double((axisalignedbb.maxX + 2D) / 16D);
 		int k = MathHelper.floor_double((axisalignedbb.minZ - 2D) / 16D);
@@ -2339,11 +2337,10 @@ public class World implements IBlockAccess {
 			}
 
 		}
-
 		return arraylist;
 	}
 
-	public List getLoadedEntityList() {
+	public List<Entity> getLoadedEntityList() {
 		return loadedEntityList;
 	}
 

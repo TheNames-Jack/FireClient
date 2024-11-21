@@ -11,9 +11,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.FontRenderer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Render;
 import net.minecraft.util.Tessellator;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            Render, RenderBlocks, EntityItem, MathHelper, 

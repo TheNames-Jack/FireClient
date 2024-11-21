@@ -128,10 +128,10 @@ public class ComponentNetherBridgeNetherStalkRoom extends ComponentNetherBridgeP
         placeBlockAtCurrentPosition(world, Block.stairsNetherBrick.blockID, j1, 8, 5, 3, structureboundingbox);
         placeBlockAtCurrentPosition(world, Block.stairsNetherBrick.blockID, j1, 8, 5, 9, structureboundingbox);
         placeBlockAtCurrentPosition(world, Block.stairsNetherBrick.blockID, j1, 8, 5, 10, structureboundingbox);
-        fillWithBlocks(world, structureboundingbox, 3, 4, 4, 4, 4, 8, Block.slowSand.blockID, Block.slowSand.blockID, false);
-        fillWithBlocks(world, structureboundingbox, 8, 4, 4, 9, 4, 8, Block.slowSand.blockID, Block.slowSand.blockID, false);
-        fillWithBlocks(world, structureboundingbox, 3, 5, 4, 4, 5, 8, Block.netherStalk.blockID, Block.netherStalk.blockID, false);
-        fillWithBlocks(world, structureboundingbox, 8, 5, 4, 9, 5, 8, Block.netherStalk.blockID, Block.netherStalk.blockID, false);
+        fillWithBlocks(world, structureboundingbox, 3, 4, 4, 4, 4, 8, Block.SOUL_SAND.blockID, Block.SOUL_SAND.blockID, false);
+        fillWithBlocks(world, structureboundingbox, 8, 4, 4, 9, 4, 8, Block.SOUL_SAND.blockID, Block.SOUL_SAND.blockID, false);
+        fillWithBlocks(world, structureboundingbox, 3, 5, 4, 4, 5, 8, Block.NETHER_WART.blockID, Block.NETHER_WART.blockID, false);
+        fillWithBlocks(world, structureboundingbox, 8, 5, 4, 9, 5, 8, Block.NETHER_WART.blockID, Block.NETHER_WART.blockID, false);
         fillWithBlocks(world, structureboundingbox, 4, 2, 0, 8, 2, 12, Block.netherBrick.blockID, Block.netherBrick.blockID, false);
         fillWithBlocks(world, structureboundingbox, 0, 2, 4, 12, 2, 8, Block.netherBrick.blockID, Block.netherBrick.blockID, false);
         fillWithBlocks(world, structureboundingbox, 4, 0, 0, 8, 1, 3, Block.netherBrick.blockID, Block.netherBrick.blockID, false);

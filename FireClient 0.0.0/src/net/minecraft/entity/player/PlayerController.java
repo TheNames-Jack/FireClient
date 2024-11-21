@@ -98,7 +98,7 @@ public abstract class PlayerController {
 	public void func_40593_a(int i, int j) {
 	}
 
-	public boolean func_35643_e() {
+	public boolean displayHUD() {
 		return false;
 	}
 

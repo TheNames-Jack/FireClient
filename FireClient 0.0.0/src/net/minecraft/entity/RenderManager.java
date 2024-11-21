@@ -1,7 +1,3 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode fieldsfirst 
-
 package net.minecraft.entity;
 
 import java.util.HashMap;
@@ -11,6 +7,7 @@ import java.util.Map;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.enderdragon.EntityEnderDragon;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemRenderer;
 import net.minecraft.model.ModelBiped;
@@ -26,40 +23,12 @@ import net.minecraft.model.ModelWolf;
 import net.minecraft.model.ModelZombie;
 import net.minecraft.util.FontRenderer;
 import net.minecraft.util.GameSettings;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.OpenGlHelper;
 import net.minecraft.util.Render;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-// Referenced classes of package net.minecraft.src:
-//            EntitySpider, RenderSpider, EntityCaveSpider, EntityPig, 
-//            RenderPig, ModelPig, EntitySheep, RenderSheep, 
-//            ModelSheep2, ModelSheep1, EntityCow, RenderCow, 
-//            ModelCow, EntityMooshroom, RenderMooshroom, EntityWolf, 
-//            RenderWolf, ModelWolf, EntityChicken, RenderChicken, 
-//            ModelChicken, EntitySilverfish, RenderSilverfish, EntityCreeper, 
-//            RenderCreeper, EntityEnderman, RenderEnderman, EntitySnowman, 
-//            RenderSnowMan, EntitySkeleton, RenderBiped, ModelSkeleton, 
-//            EntityBlaze, RenderBlaze, EntityZombie, ModelZombie, 
-//            EntitySlime, RenderSlime, ModelSlime, EntityMagmaCube, 
-//            RenderMagmaCube, EntityPlayer, RenderPlayer, EntityGiantZombie, 
-//            RenderGiantZombie, EntityGhast, RenderGhast, EntitySquid, 
-//            RenderSquid, ModelSquid, EntityVillager, RenderVillager, 
-//            EntityLiving, RenderLiving, ModelBiped, EntityDragon, 
-//            RenderDragon, EntityEnderCrystal, RenderEnderCrystal, Entity, 
-//            RenderEntity, EntityPainting, RenderPainting, EntityArrow, 
-//            RenderArrow, EntitySnowball, RenderSnowball, Item, 
-//            EntityEnderPearl, EntityEnderEye, EntityEgg, EntityPotion, 
-//            EntityFireball, RenderFireball, EntitySmallFireball, EntityItem, 
-//            RenderItem, EntityXPOrb, RenderXPOrb, EntityTNTPrimed, 
-//            RenderTNTPrimed, EntityFallingSand, RenderFallingSand, EntityMinecart, 
-//            RenderMinecart, EntityBoat, RenderBoat, EntityFishHook, 
-//            RenderFish, EntityLightningBolt, RenderLightningBolt, Render, 
-//            MathHelper, World, Block, GameSettings, 
-//            OpenGlHelper, FontRenderer, RenderEngine, ItemRenderer
-
 public class RenderManager {
-
 	private Map entityRenderMap;
 	public static RenderManager instance = new RenderManager();
 	private FontRenderer fontRenderer;
@@ -79,50 +48,50 @@ public class RenderManager {
 
 	private RenderManager() {
 		entityRenderMap = new HashMap();
-		entityRenderMap.put(net.minecraft.entity.EntitySpider.class, new RenderSpider());
-		entityRenderMap.put(net.minecraft.entity.EntityCaveSpider.class, new RenderSpider());
-		entityRenderMap.put(net.minecraft.entity.EntityPig.class, new RenderPig(new ModelPig(), new ModelPig(0.5F), 0.7F));
-		entityRenderMap.put(net.minecraft.entity.EntitySheep.class, new RenderSheep(new ModelSheep2(), new ModelSheep1(), 0.7F));
-		entityRenderMap.put(net.minecraft.entity.EntityCow.class, new RenderCow(new ModelCow(), 0.7F));
-		entityRenderMap.put(net.minecraft.entity.EntityMooshroom.class, new RenderMooshroom(new ModelCow(), 0.7F));
-		entityRenderMap.put(net.minecraft.entity.EntityWolf.class, new RenderWolf(new ModelWolf(), 0.5F));
-		entityRenderMap.put(net.minecraft.entity.EntityChicken.class, new RenderChicken(new ModelChicken(), 0.3F));
-		entityRenderMap.put(net.minecraft.entity.EntitySilverfish.class, new RenderSilverfish());
-		entityRenderMap.put(net.minecraft.entity.EntityCreeper.class, new RenderCreeper());
-		entityRenderMap.put(net.minecraft.entity.EntityEnderman.class, new RenderEnderman());
-		entityRenderMap.put(net.minecraft.entity.EntitySnowman.class, new RenderSnowMan());
-		entityRenderMap.put(net.minecraft.entity.EntitySkeleton.class, new RenderBiped(new ModelSkeleton(), 0.5F));
-		entityRenderMap.put(net.minecraft.entity.EntityBlaze.class, new RenderBlaze());
-		entityRenderMap.put(net.minecraft.entity.EntityZombie.class, new RenderBiped(new ModelZombie(), 0.5F));
-		entityRenderMap.put(net.minecraft.entity.EntitySlime.class, new RenderSlime(new ModelSlime(16), new ModelSlime(0), 0.25F));
-		entityRenderMap.put(net.minecraft.entity.EntityMagmaCube.class, new RenderMagmaCube());
-		entityRenderMap.put(net.minecraft.entity.EntityPlayer.class, new RenderPlayer());
-		entityRenderMap.put(net.minecraft.entity.EntityGiantZombie.class, new RenderGiantZombie(new ModelZombie(), 0.5F, 6F));
-		entityRenderMap.put(net.minecraft.entity.EntityGhast.class, new RenderGhast());
-		entityRenderMap.put(net.minecraft.entity.EntitySquid.class, new RenderSquid(new ModelSquid(), 0.7F));
-		entityRenderMap.put(net.minecraft.entity.EntityVillager.class, new RenderVillager());
-		entityRenderMap.put(net.minecraft.entity.EntityLiving.class, new RenderLiving(new ModelBiped(), 0.5F));
-		entityRenderMap.put(net.minecraft.entity.enderdragon.EntityEnderdragon.class, new RenderDragon());
-		entityRenderMap.put(net.minecraft.entity.EntityEnderCrystal.class, new RenderEnderCrystal(true));
-		entityRenderMap.put(net.minecraft.entity.EntityEnderCrystalBaseless.class, new RenderEnderCrystal(false));
-		entityRenderMap.put(net.minecraft.entity.Entity.class, new RenderEntity());
-		entityRenderMap.put(net.minecraft.entity.EntityPainting.class, new RenderPainting());
-		entityRenderMap.put(net.minecraft.entity.EntityArrow.class, new RenderArrow());
-		entityRenderMap.put(net.minecraft.entity.EntitySnowball.class, new RenderSnowball(Item.SNOWBALL.getIconFromDamage(0)));
-		entityRenderMap.put(net.minecraft.entity.EntityEnderPearl.class, new RenderSnowball(Item.ENDER_PEARL.getIconFromDamage(0)));
-		entityRenderMap.put(net.minecraft.entity.EntityEnderEye.class, new RenderSnowball(Item.ENDER_EYE.getIconFromDamage(0)));
-		entityRenderMap.put(net.minecraft.entity.EntityEgg.class, new RenderSnowball(Item.EGG.getIconFromDamage(0)));
-		entityRenderMap.put(net.minecraft.entity.EntityPotion.class, new RenderSnowball(154));
-		entityRenderMap.put(net.minecraft.entity.EntityFireball.class, new RenderFireball(2.0F));
-		entityRenderMap.put(net.minecraft.entity.EntitySmallFireball.class, new RenderFireball(0.5F));
-		entityRenderMap.put(net.minecraft.entity.EntityItem.class, new RenderItem());
-		entityRenderMap.put(net.minecraft.entity.EntityXPOrb.class, new RenderXPOrb());
-		entityRenderMap.put(net.minecraft.entity.EntityTNTPrimed.class, new RenderTNTPrimed());
-		entityRenderMap.put(net.minecraft.entity.EntityFallingSand.class, new RenderFallingSand());
-		entityRenderMap.put(net.minecraft.entity.EntityMinecart.class, new RenderMinecart());
-		entityRenderMap.put(net.minecraft.entity.EntityBoat.class, new RenderBoat());
-		entityRenderMap.put(net.minecraft.entity.EntityFishHook.class, new RenderFish());
-		entityRenderMap.put(net.minecraft.entity.EntityLightningBolt.class, new RenderLightningBolt());
+		entityRenderMap.put(EntitySpider.class, new RenderSpider());
+		entityRenderMap.put(EntityCaveSpider.class, new RenderSpider());
+		entityRenderMap.put(EntityPig.class, new RenderPig(new ModelPig(), new ModelPig(0.5F), 0.7F));
+		entityRenderMap.put(EntitySheep.class, new RenderSheep(new ModelSheep2(), new ModelSheep1(), 0.7F));
+		entityRenderMap.put(EntityCow.class, new RenderCow(new ModelCow(), 0.7F));
+		entityRenderMap.put(EntityMooshroom.class, new RenderMooshroom(new ModelCow(), 0.7F));
+		entityRenderMap.put(EntityWolf.class, new RenderWolf(new ModelWolf(), 0.5F));
+		entityRenderMap.put(EntityChicken.class, new RenderChicken(new ModelChicken(), 0.3F));
+		entityRenderMap.put(EntitySilverfish.class, new RenderSilverfish());
+		entityRenderMap.put(EntityCreeper.class, new RenderCreeper());
+		entityRenderMap.put(EntityEnderman.class, new RenderEnderman());
+		entityRenderMap.put(EntitySnowman.class, new RenderSnowMan());
+		entityRenderMap.put(EntitySkeleton.class, new RenderBiped(new ModelSkeleton(), 0.5F));
+		entityRenderMap.put(EntityBlaze.class, new RenderBlaze());
+		entityRenderMap.put(EntityZombie.class, new RenderBiped(new ModelZombie(), 0.5F));
+		entityRenderMap.put(EntitySlime.class, new RenderSlime(new ModelSlime(16), new ModelSlime(0), 0.25F));
+		entityRenderMap.put(EntityMagmaCube.class, new RenderMagmaCube());
+		entityRenderMap.put(EntityPlayer.class, new RenderPlayer());
+		entityRenderMap.put(EntityGiantZombie.class, new RenderGiantZombie(new ModelZombie(), 0.5F, 6F));
+		entityRenderMap.put(EntityGhast.class, new RenderGhast());
+		entityRenderMap.put(EntitySquid.class, new RenderSquid(new ModelSquid(), 0.7F));
+		entityRenderMap.put(EntityVillager.class, new RenderVillager());
+		entityRenderMap.put(EntityLiving.class, new RenderLiving(new ModelBiped(), 0.5F));
+		entityRenderMap.put(EntityEnderDragon.class, new RenderDragon());
+		entityRenderMap.put(EntityEnderCrystal.class, new RenderEnderCrystal(true));
+		entityRenderMap.put(EntityEnderCrystalBaseless.class, new RenderEnderCrystal(false));
+		entityRenderMap.put(Entity.class, new RenderEntity());
+		entityRenderMap.put(EntityPainting.class, new RenderPainting());
+		entityRenderMap.put(EntityArrow.class, new RenderArrow());
+		entityRenderMap.put(EntitySnowball.class, new RenderSnowball(Item.SNOWBALL.getIconFromDamage(0)));
+		entityRenderMap.put(EntityEnderPearl.class, new RenderSnowball(Item.ENDER_PEARL.getIconFromDamage(0)));
+		entityRenderMap.put(EntityEnderEye.class, new RenderSnowball(Item.ENDER_EYE.getIconFromDamage(0)));
+		entityRenderMap.put(EntityEgg.class, new RenderSnowball(Item.EGG.getIconFromDamage(0)));
+		entityRenderMap.put(EntityPotion.class, new RenderSnowball(154));
+		entityRenderMap.put(EntityFireball.class, new RenderFireball(2.0F));
+		entityRenderMap.put(EntitySmallFireball.class, new RenderFireball(0.5F));
+		entityRenderMap.put(EntityItem.class, new RenderItem());
+		entityRenderMap.put(EntityXPOrb.class, new RenderXPOrb());
+		entityRenderMap.put(EntityTNTPrimed.class, new RenderTNTPrimed());
+		entityRenderMap.put(EntityFallingSand.class, new RenderFallingSand());
+		entityRenderMap.put(EntityMinecart.class, new RenderMinecart());
+		entityRenderMap.put(EntityBoat.class, new RenderBoat());
+		entityRenderMap.put(EntityFishHook.class, new RenderFish());
+		entityRenderMap.put(EntityLightningBolt.class, new RenderLightningBolt());
 		Render render;
 		for(Iterator iterator = entityRenderMap.values().iterator(); iterator.hasNext(); render.setRenderManager(this)) {
 			render = (Render) iterator.next();

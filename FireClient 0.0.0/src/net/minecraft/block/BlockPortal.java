@@ -57,11 +57,11 @@ public class BlockPortal extends BlockBreakable
     {
         int l = 0;
         int i1 = 0;
-        if(world.getBlockId(i - 1, j, k) == Block.obsidian.blockID || world.getBlockId(i + 1, j, k) == Block.obsidian.blockID)
+        if(world.getBlockId(i - 1, j, k) == Block.OBSIDIAN.blockID || world.getBlockId(i + 1, j, k) == Block.OBSIDIAN.blockID)
         {
             l = 1;
         }
-        if(world.getBlockId(i, j, k - 1) == Block.obsidian.blockID || world.getBlockId(i, j, k + 1) == Block.obsidian.blockID)
+        if(world.getBlockId(i, j, k - 1) == Block.OBSIDIAN.blockID || world.getBlockId(i, j, k + 1) == Block.OBSIDIAN.blockID)
         {
             i1 = 1;
         }
@@ -86,7 +86,7 @@ public class BlockPortal extends BlockBreakable
                 int j2 = world.getBlockId(i + l * j1, j + l1, k + i1 * j1);
                 if(flag)
                 {
-                    if(j2 != Block.obsidian.blockID)
+                    if(j2 != Block.OBSIDIAN.blockID)
                     {
                         return false;
                     }
@@ -125,14 +125,14 @@ public class BlockPortal extends BlockBreakable
         }
         int k1;
         for(k1 = j; world.getBlockId(i, k1 - 1, k) == blockID; k1--) { }
-        if(world.getBlockId(i, k1 - 1, k) != Block.obsidian.blockID)
+        if(world.getBlockId(i, k1 - 1, k) != Block.OBSIDIAN.blockID)
         {
             world.setBlockWithNotify(i, j, k, 0);
             return;
         }
         int l1;
         for(l1 = 1; l1 < 4 && world.getBlockId(i, k1 + l1, k) == blockID; l1++) { }
-        if(l1 != 3 || world.getBlockId(i, k1 + l1, k) != Block.obsidian.blockID)
+        if(l1 != 3 || world.getBlockId(i, k1 + l1, k) != Block.OBSIDIAN.blockID)
         {
             world.setBlockWithNotify(i, j, k, 0);
             return;
@@ -144,7 +144,7 @@ public class BlockPortal extends BlockBreakable
             world.setBlockWithNotify(i, j, k, 0);
             return;
         }
-        if((world.getBlockId(i + i1, j, k + j1) != Block.obsidian.blockID || world.getBlockId(i - i1, j, k - j1) != blockID) && (world.getBlockId(i - i1, j, k - j1) != Block.obsidian.blockID || world.getBlockId(i + i1, j, k + j1) != blockID))
+        if((world.getBlockId(i + i1, j, k + j1) != Block.OBSIDIAN.blockID || world.getBlockId(i - i1, j, k - j1) != blockID) && (world.getBlockId(i - i1, j, k - j1) != Block.OBSIDIAN.blockID || world.getBlockId(i + i1, j, k + j1) != blockID))
         {
             world.setBlockWithNotify(i, j, k, 0);
             return;

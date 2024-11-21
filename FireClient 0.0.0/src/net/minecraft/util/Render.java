@@ -12,6 +12,7 @@ import net.minecraft.entity.RenderManager;
 import net.minecraft.model.ModelBase;
 import net.minecraft.model.ModelBiped;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public abstract class Render {

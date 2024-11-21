@@ -8,7 +8,7 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.model.ModelBase;
 import net.minecraft.model.ModelCreeper;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            RenderLiving, ModelCreeper, EntityCreeper, MathHelper, 

@@ -8,6 +8,7 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:
@@ -43,7 +44,7 @@ public class Teleporter
                         int j2 = j + l1;
                         int k2 = (k + k1 * i1) - j1 * l;
                         boolean flag = l1 < 0;
-                        world.setBlockWithNotify(i2, j2, k2, flag ? Block.obsidian.blockID : 0);
+                        world.setBlockWithNotify(i2, j2, k2, flag ? Block.OBSIDIAN.blockID : 0);
                     }
 
                 }
@@ -293,7 +294,7 @@ label1:
                         int l9 = i3 + j7;
                         int i11 = (l3 + (i6 - 1) * j4) - i5 * i4;
                         boolean flag = j7 < 0;
-                        world.setBlockWithNotify(k8, l9, i11, flag ? Block.obsidian.blockID : 0);
+                        world.setBlockWithNotify(k8, l9, i11, flag ? Block.OBSIDIAN.blockID : 0);
                     }
 
                 }
@@ -312,7 +313,7 @@ label1:
                     int i10 = i3 + k7;
                     int j11 = l3 + (j6 - 1) * j4;
                     boolean flag1 = j6 == 0 || j6 == 3 || k7 == -1 || k7 == 3;
-                    world.setBlockWithNotify(l8, i10, j11, flag1 ? Block.obsidian.blockID : Block.portal.blockID);
+                    world.setBlockWithNotify(l8, i10, j11, flag1 ? Block.OBSIDIAN.blockID : Block.portal.blockID);
                 }
 
             }

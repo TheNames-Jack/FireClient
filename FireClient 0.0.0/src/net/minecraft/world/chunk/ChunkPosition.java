@@ -4,8 +4,8 @@
 
 package net.minecraft.world.chunk;
 
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3D;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            Vec3D, MathHelper

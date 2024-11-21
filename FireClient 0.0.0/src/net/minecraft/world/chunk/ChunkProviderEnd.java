@@ -12,8 +12,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.util.EnumCreatureType;
 import net.minecraft.util.IProgressUpdate;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.NoiseGeneratorOctaves;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldChunkManager;
 
@@ -96,7 +96,7 @@ public class ChunkProviderEnd
                                 int j3 = 0;
                                 if(d15 > 0.0D)
                                 {
-                                    j3 = Block.whiteStone.blockID;
+                                    j3 = Block.END_STONE.blockID;
                                 }
                                 abyte0[k2] = (byte)j3;
                                 k2 += l2;
@@ -129,8 +129,8 @@ public class ChunkProviderEnd
             {
                 int i1 = 1;
                 int j1 = -1;
-                byte byte0 = (byte)Block.whiteStone.blockID;
-                byte byte1 = (byte)Block.whiteStone.blockID;
+                byte byte0 = (byte)Block.END_STONE.blockID;
+                byte byte1 = (byte)Block.END_STONE.blockID;
                 for(int k1 = field_40392_m.field_35469_d; k1 >= 0; k1--)
                 {
                     int l1 = (l * 16 + k) * field_40392_m.worldYMax + k1;
@@ -149,7 +149,7 @@ public class ChunkProviderEnd
                         if(i1 <= 0)
                         {
                             byte0 = 0;
-                            byte1 = (byte)Block.whiteStone.blockID;
+                            byte1 = (byte)Block.END_STONE.blockID;
                         }
                         j1 = i1;
                         if(k1 >= 0)

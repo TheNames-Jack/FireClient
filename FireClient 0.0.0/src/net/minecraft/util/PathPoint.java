@@ -4,6 +4,8 @@
 
 package net.minecraft.util;
 
+import net.minecraft.util.math.MathHelper;
+
 // Referenced classes of package net.minecraft.src:
 //            MathHelper
 

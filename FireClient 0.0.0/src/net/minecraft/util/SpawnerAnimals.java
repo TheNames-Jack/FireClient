@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.EntitySheep;
 import net.minecraft.entity.EntitySkeleton;
 import net.minecraft.entity.EntitySpider;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkCoordIntPair;
 import net.minecraft.world.chunk.ChunkCoordinates;

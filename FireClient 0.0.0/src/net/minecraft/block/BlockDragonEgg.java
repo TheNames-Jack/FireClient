@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityFallingSand;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.entity.enderdragon.EntityEnderdragon;
+import net.minecraft.entity.enderdragon.EntityEnderDragon;
 import net.minecraft.world.World;
 
 public class BlockDragonEgg extends Block {
@@ -18,15 +18,6 @@ public class BlockDragonEgg extends Block {
 		world.scheduleBlockUpdate(i, j, k, blockID, tickRate());
 	}
 	
-	@Override
-	public void onBlockRemoval(World world, int i, int j, int k) {
-		//TODO REMOVE METHOD LATER
-//		EntityEnderdragon dragon = new EntityEnderdragon(world);
-//		world.entityJoinedWorld(dragon);
-//		dragon.setPosition(i, j, k);
-//		dragon.setEntityHealth(0);
-	}
-
 	public void onNeighborBlockChange(World world, int i, int j, int k, int l) {
 		world.scheduleBlockUpdate(i, j, k, blockID, tickRate());
 	}

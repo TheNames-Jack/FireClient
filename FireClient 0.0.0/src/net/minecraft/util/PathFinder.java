@@ -9,6 +9,7 @@ import net.minecraft.block.BlockDoor;
 import net.minecraft.block.IBlockAccess;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            Path, IntHashMap, PathPoint, Entity, 

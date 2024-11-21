@@ -16,12 +16,12 @@ import net.minecraft.util.EnumAction;
 import net.minecraft.util.EnumArmorMaterial;
 import net.minecraft.util.EnumRarity;
 import net.minecraft.util.EnumToolMaterial;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StatList;
 import net.minecraft.util.StringTranslate;
 import net.minecraft.util.Vec3D;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class Item {
@@ -109,7 +109,7 @@ public class Item {
 	public static Item MILK_BUCKET = (new ItemBucketMilk(79)).setIconCoord(13, 4).setItemName("milk").setContainerItem(EMPTY_BUCKET);
 	public static Item BRICK = (new Item(80)).setIconCoord(6, 1).setItemName("brick");
 	public static Item CLAY = (new Item(81)).setIconCoord(9, 3).setItemName("clay");
-	public static Item SUGARCANE = (new ItemReed(82, Block.reed)).setIconCoord(11, 1).setItemName("reeds");
+	public static Item SUGARCANE = (new ItemReed(82, Block.SUGAR_CANE)).setIconCoord(11, 1).setItemName("reeds");
 	public static Item PAPER = (new Item(83)).setIconCoord(10, 3).setItemName("paper");
 	public static Item BOOK = (new Item(84)).setIconCoord(11, 3).setItemName("book");
 	public static Item SLIMEBALL = (new Item(85)).setIconCoord(14, 1).setItemName("slimeball");
@@ -143,7 +143,7 @@ public class Item {
 	public static Item BLAZE_ROD = (new Item(113)).setIconCoord(12, 6).setItemName("blazeRod");
 	public static Item GHAST_TEAR = (new Item(114)).setIconCoord(11, 7).setItemName("ghastTear").setPotionEffect(PotionHelper.field_40366_c);
 	public static Item GOLD_INGOT = (new Item(115)).setIconCoord(12, 7).setItemName("goldNugget");
-	public static Item NETHER_WART = (new ItemSeeds(116, Block.netherStalk.blockID, Block.slowSand.blockID)).setIconCoord(13, 7).setItemName("netherStalkSeeds").setPotionEffect("+4");
+	public static Item NETHER_WART = (new ItemSeeds(116, Block.NETHER_WART.blockID, Block.SOUL_SAND.blockID)).setIconCoord(13, 7).setItemName("netherStalkSeeds").setPotionEffect("+4");
 	public static ItemPotion POTION = (ItemPotion) (new ItemPotion(117)).setIconCoord(13, 8).setItemName("potion");
 	public static Item GLASS_BOTTLE = (new ItemGlassBottle(118)).setIconCoord(12, 8).setItemName("glassBottle");
 	public static Item SPIDER_EYE = (new ItemFood(119, 2, 0.8F, false)).setPotionEffect(Potion.potionPoison.id, 5, 0, 1.0F).setIconCoord(11, 8).setItemName("spiderEye").setPotionEffect(PotionHelper.field_40363_d);

@@ -6,11 +6,12 @@ package net.minecraft.world;
 
 import net.minecraft.biome.BiomeGenBase;
 import net.minecraft.block.Block;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3D;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.chunk.ChunkCoordinates;
 import net.minecraft.world.chunk.ChunkProviderEnd;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.nether.WorldChunkManagerHell;
 
 // Referenced classes of package net.minecraft.src:
 //            WorldProvider, WorldChunkManagerHell, BiomeGenBase, ChunkProviderEnd, 

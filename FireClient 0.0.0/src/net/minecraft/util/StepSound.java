@@ -1,41 +1,29 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode fieldsfirst 
-
 package net.minecraft.util;
 
+public class StepSound {
+	public final String stepSoundName;
+	public final float stepSoundVolume;
+	public final float stepSoundPitch;
 
-public class StepSound
-{
+	public StepSound(String s, float f, float f1) {
+		stepSoundName = s;
+		stepSoundVolume = f;
+		stepSoundPitch = f1;
+	}
 
-    public final String stepSoundName;
-    public final float stepSoundVolume;
-    public final float stepSoundPitch;
+	public float getVolume() {
+		return stepSoundVolume;
+	}
 
-    public StepSound(String s, float f, float f1)
-    {
-        stepSoundName = s;
-        stepSoundVolume = f;
-        stepSoundPitch = f1;
-    }
+	public float getPitch() {
+		return stepSoundPitch;
+	}
 
-    public float getVolume()
-    {
-        return stepSoundVolume;
-    }
+	public String stepSoundDir() {
+		return (new StringBuilder()).append("step.").append(stepSoundName).toString();
+	}
 
-    public float getPitch()
-    {
-        return stepSoundPitch;
-    }
-
-    public String stepSoundDir()
-    {
-        return (new StringBuilder()).append("step.").append(stepSoundName).toString();
-    }
-
-    public String stepSoundDir2()
-    {
-        return (new StringBuilder()).append("step.").append(stepSoundName).toString();
-    }
+	public String stepSoundDir2() {
+		return (new StringBuilder()).append("step.").append(stepSoundName).toString();
+	}
 }

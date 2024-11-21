@@ -30,7 +30,7 @@ public class BlockNetherStalk extends BlockFlower
 
     protected boolean canThisPlantGrowOnThisBlockID(int i)
     {
-        return i == Block.slowSand.blockID;
+        return i == Block.SOUL_SAND.blockID;
     }
 
     public void updateTick(World world, int i, int j, int k, Random random)

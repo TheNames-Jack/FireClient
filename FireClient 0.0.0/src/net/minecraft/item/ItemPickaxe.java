@@ -24,7 +24,7 @@ public class ItemPickaxe extends ItemTool
 
     public boolean canHarvestBlock(Block block)
     {
-        if(block == Block.obsidian)
+        if(block == Block.OBSIDIAN)
         {
             return toolMaterial.getHarvestLevel() == 3;
         }

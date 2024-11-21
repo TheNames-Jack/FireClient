@@ -7,7 +7,7 @@ package net.minecraft.item.map;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:

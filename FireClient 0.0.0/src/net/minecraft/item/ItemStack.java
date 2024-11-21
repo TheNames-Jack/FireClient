@@ -47,11 +47,11 @@ public final class ItemStack {
 		this(item.id, i, j);
 	}
 
-	public ItemStack(int i, int j, int k) {
+	public ItemStack(int id, int amount, int damage) {
 		stackSize = 0;
-		itemID = i;
-		stackSize = j;
-		itemDamage = k;
+		itemID = id;
+		stackSize = amount;
+		itemDamage = damage;
 	}
 
 	public static ItemStack loadItemStackFromNBT(NBTTagCompound nbttagcompound) {

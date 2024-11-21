@@ -71,7 +71,6 @@ import net.minecraft.util.ISaveFormat;
 import net.minecraft.util.ISaveHandler;
 import net.minecraft.util.KeyBinding;
 import net.minecraft.util.LoadingScreenRenderer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MouseHelper;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.MovingObjectPosition;
@@ -105,12 +104,14 @@ import net.minecraft.util.Timer;
 import net.minecraft.util.UnexpectedThrowable;
 import net.minecraft.util.Vec3D;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldRenderer;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.chunk.ChunkCoordinates;
 import net.minecraft.world.chunk.ChunkProviderLoadOrGenerate;
+import net.minecraft.world.end.DragonFightManager;
 
 public abstract class Minecraft implements Runnable {
 	public static byte field_28006_b[] = new byte[0xa00000];
@@ -542,7 +543,7 @@ public abstract class Minecraft implements Runnable {
 		try {
 			while(running) {
 				try {
-					func_40001_x();
+					updateGame();
 				}catch(MinecraftException minecraftexception) {
 					theWorld = null;
 					changeWorld1(null);
@@ -563,7 +564,7 @@ public abstract class Minecraft implements Runnable {
 		}
 	}
 
-	private void func_40001_x() {
+	private void updateGame() {
 		if(mcApplet != null && !mcApplet.isActive()) {
 			running = false;
 			return;
@@ -670,6 +671,9 @@ public abstract class Minecraft implements Runnable {
 			fpsCounter = 0;
 		}
 		Profiler.endSection();
+		if(DragonFightManager.enderDragonExists) {
+			DragonFightManager.update(this);
+		}
 	}
 
 	public void freeMemory() {
@@ -1186,7 +1190,7 @@ public abstract class Minecraft implements Runnable {
 									thePlayer.canUseElytra = false;
 								}
 							}
-							if(Keyboard.getEventKey() == 59) {
+							if(Keyboard.getEventKey() == Keyboard.KEY_F1) {
 								gameSettings.hideGUI = !gameSettings.hideGUI;
 							}
 							if(Keyboard.getEventKey() == 61) {
@@ -1199,6 +1203,16 @@ public abstract class Minecraft implements Runnable {
 									gameSettings.showDebugInfoMore = false;
 								}
 							}
+
+							// TODO FOR TESTING; REMOVE WHEN DONE!
+							if(Keyboard.getEventKey() == Keyboard.KEY_BACK) {
+								thePlayer.inventory.dropAllItems();
+							}
+
+							if(Keyboard.getEventKey() == Keyboard.KEY_J) {
+								thePlayer.worldObj.setBlock((int)(thePlayer.posX - 0.5F), (int)thePlayer.posY, (int)thePlayer.posZ, Block.endPortal.blockID);
+							}
+
 							if(gameSettings.keyBindPerspective.isPressed()) {
 								gameSettings.thirdPersonView++;
 								if(gameSettings.thirdPersonView > 2) {
@@ -1490,7 +1504,7 @@ public abstract class Minecraft implements Runnable {
 			loadingScreen.displayLoadingString("Building terrain");
 		}
 		char c = '\200';
-		if(playerController.func_35643_e()) {
+		if(playerController.displayHUD()) {
 			c = '@';
 		}
 		int i = 0;
@@ -1512,7 +1526,7 @@ public abstract class Minecraft implements Runnable {
 					loadingScreen.setLoadingProgress((i++ * 100) / j);
 				}
 				theWorld.getBlockId(chunkcoordinates.posX + k, 64, chunkcoordinates.posZ + l);
-				if(playerController.func_35643_e()) {
+				if(playerController.displayHUD()) {
 					continue;
 				}
 				while(theWorld.updatingLighting());
@@ -1520,7 +1534,7 @@ public abstract class Minecraft implements Runnable {
 
 		}
 
-		if(!playerController.func_35643_e()) {
+		if(!playerController.displayHUD()) {
 			if(loadingScreen != null) {
 				loadingScreen.displayLoadingString("Simulating world for a bit");
 			}
@@ -1528,7 +1542,7 @@ public abstract class Minecraft implements Runnable {
 			theWorld.dropOldChunks();
 		}
 	}
-
+	
 	public void installResource(String s, File file) {
 		int i = s.indexOf("/");
 		String s1 = s.substring(0, i);
@@ -1540,9 +1554,11 @@ public abstract class Minecraft implements Runnable {
 		}else if(s1.equalsIgnoreCase("streaming")) {
 			sndManager.addStreaming(s, file);
 		}else if(s1.equalsIgnoreCase("music")) {
-			sndManager.addMusic(s, file);
+			sndManager.addRandomPlayMusic(s, file);
 		}else if(s1.equalsIgnoreCase("newmusic")) {
-			sndManager.addMusic(s, file);
+			sndManager.addRandomPlayMusic(s, file);
+		}else if(s1.equalsIgnoreCase("firehack")) {
+			sndManager.addPlayMusic(s, file);
 		}
 	}
 
@@ -1703,7 +1719,7 @@ public abstract class Minecraft implements Runnable {
 			if(i == Block.stairDouble.blockID) {
 				i = Block.stairSingle.blockID;
 			}
-			if(i == Block.bedrock.blockID) {
+			if(i == Block.BEDROCK.blockID) {
 				i = Block.stone.blockID;
 			}
 			int j = 0;
@@ -1715,5 +1731,4 @@ public abstract class Minecraft implements Runnable {
 			thePlayer.inventory.setCurrentItem(i, j, flag, playerController instanceof PlayerControllerCreative);
 		}
 	}
-
 }

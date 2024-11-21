@@ -11,9 +11,9 @@ import net.minecraft.entity.player.PlayerControllerCreative;
 import net.minecraft.entity.player.PlayerControllerSP;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.ISaveFormat;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringTranslate;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldSettings;
 
 import org.lwjgl.input.Keyboard;

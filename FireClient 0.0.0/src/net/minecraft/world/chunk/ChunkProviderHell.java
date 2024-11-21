@@ -18,11 +18,11 @@ import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.NoiseGeneratorOctaves;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldChunkManager;
-import net.minecraft.world.WorldGenFire;
 import net.minecraft.world.WorldGenFlowers;
-import net.minecraft.world.WorldGenGlowStone1;
-import net.minecraft.world.WorldGenGlowStone2;
-import net.minecraft.world.WorldGenHellLava;
+import net.minecraft.world.nether.WorldGenFire;
+import net.minecraft.world.nether.WorldGenGlowStone1;
+import net.minecraft.world.nether.WorldGenGlowStone2;
+import net.minecraft.world.nether.WorldGenHellLava;
 
 // Referenced classes of package net.minecraft.src:
 //            IChunkProvider, MapGenNetherBridge, MapGenCavesHell, NoiseGeneratorOctaves, 
@@ -168,12 +168,12 @@ public class ChunkProviderHell
                     int i2 = (i1 * 16 + l) * worldObj.worldYMax + l1;
                     if(l1 >= worldObj.field_35469_d - hellRNG.nextInt(5))
                     {
-                        abyte0[i2] = (byte)Block.bedrock.blockID;
+                        abyte0[i2] = (byte)Block.BEDROCK.blockID;
                         continue;
                     }
                     if(l1 <= 0 + hellRNG.nextInt(5))
                     {
-                        abyte0[i2] = (byte)Block.bedrock.blockID;
+                        abyte0[i2] = (byte)Block.BEDROCK.blockID;
                         continue;
                     }
                     byte byte2 = abyte0[i2];
@@ -207,11 +207,11 @@ public class ChunkProviderHell
                             }
                             if(flag)
                             {
-                                byte0 = (byte)Block.slowSand.blockID;
+                                byte0 = (byte)Block.SOUL_SAND.blockID;
                             }
                             if(flag)
                             {
-                                byte1 = (byte)Block.slowSand.blockID;
+                                byte1 = (byte)Block.SOUL_SAND.blockID;
                             }
                         }
                         if(l1 < k && byte0 == 0)

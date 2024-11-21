@@ -14,9 +14,9 @@ import net.minecraft.model.ModelElytra;
 import net.minecraft.model.ModelPlayer;
 import net.minecraft.util.EnumAction;
 import net.minecraft.util.FontRenderer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Tessellator;
 import net.minecraft.util.Vec3D;
+import net.minecraft.util.math.MathHelper;
 
 public class RenderPlayer extends RenderLiving {
 	private ModelPlayer modelPlayer;

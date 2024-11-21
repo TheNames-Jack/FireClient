@@ -46,7 +46,7 @@ public class ItemLilyPad extends ItemColored
             }
             if(world.getBlockMaterial(i, j, k) == Material.water && world.getBlockMetadata(i, j, k) == 0 && world.isAirBlock(i, j + 1, k))
             {
-                world.setBlockWithNotify(i, j + 1, k, Block.waterlily.blockID);
+                world.setBlockWithNotify(i, j + 1, k, Block.LILY_PAD.blockID);
                 if(!entityplayer.abilities.depleteBuckets)
                 {
                     itemstack.stackSize--;
@@ -58,6 +58,6 @@ public class ItemLilyPad extends ItemColored
 
     public int getColorFromDamage(int i)
     {
-        return Block.waterlily.getRenderColor(i);
+        return Block.LILY_PAD.getRenderColor(i);
     }
 }

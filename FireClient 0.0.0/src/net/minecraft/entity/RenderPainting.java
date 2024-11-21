@@ -8,10 +8,10 @@ import java.util.Random;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.util.EnumArt;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.OpenGlHelper;
 import net.minecraft.util.Render;
 import net.minecraft.util.Tessellator;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            Render, EntityPainting, EnumArt, Tessellator, 

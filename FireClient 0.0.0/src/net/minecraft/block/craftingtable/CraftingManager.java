@@ -52,10 +52,10 @@ public class CraftingManager {
 		addRecipe(new ItemStack(Block.bookShelf, 1), new Object[]{
 				"###", "XXX", "###", Character.valueOf('#'), Block.planks, Character.valueOf('X'), Item.BOOK
 		});
-		addRecipe(new ItemStack(Block.blockSnow, 1), new Object[]{
+		addRecipe(new ItemStack(Block.SNOW_BLOCK, 1), new Object[]{
 				"##", "##", Character.valueOf('#'), Item.SNOWBALL
 		});
-		addRecipe(new ItemStack(Block.blockClay, 1), new Object[]{
+		addRecipe(new ItemStack(Block.CLAY_BLOCK, 1), new Object[]{
 				"##", "##", Character.valueOf('#'), Item.CLAY
 		});
 		addRecipe(new ItemStack(Block.brick, 1), new Object[]{
@@ -230,18 +230,19 @@ public class CraftingManager {
 				"###", "XXX", Character.valueOf('#'), Block.cloth, Character.valueOf('X'), Block.planks
 		});
 		addRecipe(new ItemStack(Block.enchantmentTable, 1), new Object[]{
-				" B ", "D#D", "###", Character.valueOf('#'), Block.obsidian, Character.valueOf('B'), Item.BOOK, Character.valueOf('D'), Item.DIAMOND
+				" B ", "D#D", "###", Character.valueOf('#'), Block.OBSIDIAN, Character.valueOf('B'), Item.BOOK, Character.valueOf('D'), Item.DIAMOND
 		});
 		addShapelessRecipe(new ItemStack(Item.ENDER_EYE, 1), new Object[]{
 				Item.ENDER_PEARL, Item.BLAZE_POWDER
 		});
-		//Sponge Crafting Recipe
 		addRecipe(new ItemStack(Block.sponge, 1), new Object[]{
 				"###", "###", "###", Character.valueOf('#'), Block.web
 		});
-		//Cobweb Crafting Recipe
 		addRecipe(new ItemStack(Block.web, 1), new Object[]{
 				"###", "###", "###", Character.valueOf('#'), Item.SILK
+		});
+		addShapelessRecipe(new ItemStack(Item.FIREWORK, 3), new Object[]{
+			Item.PAPER, Item.GUNPOWDER
 		});
 		Collections.sort(recipes, new RecipeSorter(this));
 		System.out.println((new StringBuilder()).append(recipes.size()).append(" recipes").toString());

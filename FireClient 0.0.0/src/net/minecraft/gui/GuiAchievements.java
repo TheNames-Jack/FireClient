@@ -13,9 +13,9 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.RenderHelper;
 import net.minecraft.entity.RenderItem;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StatFileWriter;
+import net.minecraft.util.math.MathHelper;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -216,7 +216,7 @@ public class GuiAchievements extends GuiScreen
                 int k8 = Block.sand.blockIndexInTexture;
                 if(j8 > 37 || i3 + l7 == 35)
                 {
-                    k8 = Block.bedrock.blockIndexInTexture;
+                    k8 = Block.BEDROCK.blockIndexInTexture;
                 } else
                 if(j8 == 22)
                 {

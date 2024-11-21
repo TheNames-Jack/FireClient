@@ -12,7 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumCreatureAttribute;
 import net.minecraft.util.Facing;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:
@@ -83,7 +83,7 @@ public class EntitySilverfish extends EntityMob
         }
     }
 
-    protected void func_41002_a(int i, int j, int k, int l)
+    protected void playStepSound(int i, int j, int k, int l)
     {
         worldObj.playSoundAtEntity(this, "mob.silverfish.step", 1.0F, 1.0F);
     }

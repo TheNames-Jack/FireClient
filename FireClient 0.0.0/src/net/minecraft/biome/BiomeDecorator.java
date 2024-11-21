@@ -107,20 +107,20 @@ public class BiomeDecorator {
 
 	public void decorate(World world, Random random, int i, int j) {
 		if(currentWorld != null) {
-			throw new RuntimeException("Already decorating!!");
+			//throw new RuntimeException("Already decorating!!");
 		}else {
 			currentWorld = world;
 			decoRNG = random;
 			chunk_X = i;
 			chunk_Z = j;
-			decorate_do();
+			doDecorations();
 			currentWorld = null;
 			decoRNG = null;
 			return;
 		}
 	}
 
-	protected void decorate_do() {
+	protected void doDecorations() {
 		generateOres();
 		for(int i = 0; i < sandPerChunk2; i++) {
 			int i1 = chunk_X + decoRNG.nextInt(16) + 8;

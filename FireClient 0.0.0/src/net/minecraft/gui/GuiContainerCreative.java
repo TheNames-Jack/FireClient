@@ -28,7 +28,7 @@ public class GuiContainerCreative extends GuiContainer {
 	}
 
 	// Method Name: handleMouseClick
-	protected void func_35309_a(Slot slot, int i, int j, boolean flag) {
+	protected void handleMouseClick(Slot slot, int i, int j, boolean flag) {
 		if(slot != null) {
 			if(slot.inventory == inventory) {
 				InventoryPlayer inventoryplayer = mc.thePlayer.inventory;

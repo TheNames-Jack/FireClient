@@ -29,7 +29,7 @@ public class DragonPart extends Entity {
 	}
 
 	public boolean attackEntityFrom(DamageSource damagesource, int i) {
-		return field_40073_a.func_40156_a(this, damagesource, i);
+		return field_40073_a.shouldDamage(this, damagesource, i);
 	}
 
 	public boolean func_41004_h(Entity entity) {

@@ -214,7 +214,7 @@ public abstract class GuiContainer extends GuiScreen {
 			}
 			if(j1 != -1) {
 				boolean flag1 = j1 != -999 && (Keyboard.isKeyDown(42) || Keyboard.isKeyDown(54));
-				func_35309_a(slot, j1, k, flag1);
+				handleMouseClick(slot, j1, k, flag1);
 			}
 		}
 	}
@@ -227,7 +227,7 @@ public abstract class GuiContainer extends GuiScreen {
 		return i >= slot.xDisplayPosition - 1 && i < slot.xDisplayPosition + 16 + 1 && j >= slot.yDisplayPosition - 1 && j < slot.yDisplayPosition + 16 + 1;
 	}
 
-	protected void func_35309_a(Slot slot, int i, int j, boolean flag) {
+	protected void handleMouseClick(Slot slot, int i, int j, boolean flag) {
 		if(slot != null) {
 			i = slot.slotNumber;
 		}

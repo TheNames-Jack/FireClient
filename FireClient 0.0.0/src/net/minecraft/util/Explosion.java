@@ -5,6 +5,7 @@ import java.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPosition;
 
@@ -161,7 +162,6 @@ public class Explosion {
 					worldObj.setBlockWithNotify(l, j1, l1, Block.fire.blockID);
 				}
 			}
-
 		}
 	}
 }

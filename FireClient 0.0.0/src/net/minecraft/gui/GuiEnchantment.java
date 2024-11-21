@@ -14,8 +14,8 @@ import net.minecraft.gui.container.ContainerEnchantment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.model.ModelBook;
 import net.minecraft.util.FontRenderer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ScaledResolution;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;

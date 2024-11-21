@@ -5,7 +5,7 @@
 package net.minecraft.entity;
 
 import net.minecraft.model.ModelBase;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            RenderLiving, EntityChicken, MathHelper, ModelBase, 

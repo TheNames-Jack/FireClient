@@ -12,9 +12,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerControllerCreative;
 import net.minecraft.entity.player.PlayerControllerSP;
 import net.minecraft.util.ISaveFormat;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.SaveFormatComparator;
 import net.minecraft.util.StringTranslate;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            GuiScreen, StringTranslate, GuiWorldSlot, ISaveFormat, 

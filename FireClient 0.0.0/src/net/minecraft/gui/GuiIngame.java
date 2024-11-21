@@ -15,7 +15,7 @@ import net.minecraft.entity.EntityClientPlayerMP;
 import net.minecraft.entity.RenderDragon;
 import net.minecraft.entity.RenderHelper;
 import net.minecraft.entity.RenderItem;
-import net.minecraft.entity.enderdragon.EntityEnderdragon;
+import net.minecraft.entity.enderdragon.EntityEnderDragon;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.potion.Potion;
@@ -23,10 +23,10 @@ import net.minecraft.util.ChatLine;
 import net.minecraft.util.FontRenderer;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.IINFO;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ScaledResolution;
 import net.minecraft.util.StringTranslate;
 import net.minecraft.util.Tessellator;
+import net.minecraft.util.math.MathHelper;
 
 public class GuiIngame extends Gui {
 	private static RenderItem itemRenderer = new RenderItem();
@@ -75,7 +75,7 @@ public class GuiIngame extends Gui {
 				renderPortalOverlay(f1, k, l);
 			}
 		}
-		if(!mc.playerController.func_35643_e()) {
+		if(!mc.playerController.displayHUD()) {
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glBindTexture(3553 /* GL_TEXTURE_2D */, mc.renderEngine.getTexture("/gui/gui.png"));
 			InventoryPlayer inventoryplayer = mc.thePlayer.inventory;
@@ -85,7 +85,11 @@ public class GuiIngame extends Gui {
 			GL11.glBindTexture(3553 /* GL_TEXTURE_2D */, mc.renderEngine.getTexture("/gui/icons.png"));
 			GL11.glEnable(3042 /* GL_BLEND */);
 			GL11.glBlendFunc(775, 769);
-			drawTexturedModalRect(k / 2 - 7, l / 2 - 7, 0, 0, 16, 16);
+			// Display cursor in first person only
+			if(mc.gameSettings.thirdPersonView == 0) {
+				drawTexturedModalRect(k / 2 - 7, l / 2 - 7, 0, 0, 16, 16);
+			}
+			// END
 			GL11.glDisable(3042 /* GL_BLEND */);
 			boolean flag2 = (mc.thePlayer.heartsLife / 3) % 2 == 1;
 			if(mc.thePlayer.heartsLife < 10) {
@@ -411,22 +415,22 @@ public class GuiIngame extends Gui {
 		if(RenderDragon.entityDragon == null) {
 			return;
 		}
-		EntityEnderdragon entitydragon = RenderDragon.entityDragon;
+		EntityEnderDragon entitydragon = RenderDragon.entityDragon;
 		RenderDragon.entityDragon = null;
 		FontRenderer fontrenderer = mc.fontRenderer;
 		ScaledResolution scaledresolution = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 		int i = scaledresolution.getScaledWidth();
 		char c = '\266';
 		int j = i / 2 - c / 2;
-		int k = (int) (((float) entitydragon.func_41010_ax() / (float) entitydragon.getMaxHealth()) * (float) (c + 1));
+		int k = (int) (((float) entitydragon.currentHealth() / (float) entitydragon.getMaxHealth()) * (float) (c + 1));
 		byte byte0 = 12;
 		drawTexturedModalRect(j, byte0, 0, 74, c, 5);
 		drawTexturedModalRect(j, byte0, 0, 74, c, 5);
 		if(k > 0) {
 			drawTexturedModalRect(j, byte0, 0, 79, k, 5);
 		}
-		String enderDrgaonHealth = "EnderDrgaon";
-		fontrenderer.drawStringWithShadow(enderDrgaonHealth, i / 2 - fontrenderer.getStringWidth(enderDrgaonHealth) / 2, byte0 - 10, 0xff00ff);
+		String enderDragonName = "Ender Dragon";
+		fontrenderer.drawStringWithShadow(enderDragonName, i / 2 - fontrenderer.getStringWidth(enderDragonName) / 2, byte0 - 10, 0xffffff);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glBindTexture(3553 /* GL_TEXTURE_2D */, mc.renderEngine.getTexture("/gui/icons.png"));
 	}

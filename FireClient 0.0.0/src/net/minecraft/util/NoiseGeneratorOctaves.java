@@ -6,6 +6,8 @@ package net.minecraft.util;
 
 import java.util.Random;
 
+import net.minecraft.util.math.MathHelper;
+
 // Referenced classes of package net.minecraft.src:
 //            NoiseGenerator, NoiseGeneratorPerlin, MathHelper
 

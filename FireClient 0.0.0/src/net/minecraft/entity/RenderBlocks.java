@@ -26,9 +26,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChestItemRenderHelper;
 import net.minecraft.util.Direction;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Tessellator;
 import net.minecraft.util.Vec3D;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;

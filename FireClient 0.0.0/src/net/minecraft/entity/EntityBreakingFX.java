@@ -22,7 +22,7 @@ public class EntityBreakingFX extends EntityFX
         super(world, d, d1, d2, 0.0D, 0.0D, 0.0D);
         func_40099_c(item.getIconFromDamage(0));
         particleRed = particleGreen = particleBlue = 1.0F;
-        particleGravity = Block.blockSnow.blockParticleGravity;
+        particleGravity = Block.SNOW_BLOCK.blockParticleGravity;
         particleScale /= 2.0F;
     }
 

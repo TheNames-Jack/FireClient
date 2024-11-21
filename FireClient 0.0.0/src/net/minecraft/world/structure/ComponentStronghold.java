@@ -36,13 +36,13 @@ public abstract class ComponentStronghold extends StructureComponent {
 			case 3: // '\003'
 				placeBlockAtCurrentPosition(world, 0, 0, i + 1, j, k, structureboundingbox);
 				placeBlockAtCurrentPosition(world, 0, 0, i + 1, j + 1, k, structureboundingbox);
-				placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, i, j, k, structureboundingbox);
-				placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, i, j + 1, k, structureboundingbox);
-				placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, i, j + 2, k, structureboundingbox);
-				placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, i + 1, j + 2, k, structureboundingbox);
-				placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, i + 2, j + 2, k, structureboundingbox);
-				placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, i + 2, j + 1, k, structureboundingbox);
-				placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, i + 2, j, k, structureboundingbox);
+				placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, i, j, k, structureboundingbox);
+				placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, i, j + 1, k, structureboundingbox);
+				placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, i, j + 2, k, structureboundingbox);
+				placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, i + 1, j + 2, k, structureboundingbox);
+				placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, i + 2, j + 2, k, structureboundingbox);
+				placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, i + 2, j + 1, k, structureboundingbox);
+				placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, i + 2, j, k, structureboundingbox);
 				break;
 
 			case 4: // '\004'

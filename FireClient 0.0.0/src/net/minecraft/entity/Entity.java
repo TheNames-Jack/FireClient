@@ -13,11 +13,11 @@ import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.DataWatcher;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Profiler;
 import net.minecraft.util.StepSound;
 import net.minecraft.util.Vec3D;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public abstract class Entity {
@@ -479,7 +479,7 @@ public abstract class Entity {
 			}
 			if(distanceWalkedModified > (float) nextStepDistance && j3 > 0) {
 				nextStepDistance = (int) distanceWalkedModified + 1;
-				func_41002_a(l, j1, l1, j3);
+				playStepSound(l, j1, l1, j3);
 				Block.blocksList[j3].onEntityWalking(worldObj, l, j1, l1, this);
 			}
 		}
@@ -523,7 +523,7 @@ public abstract class Entity {
 		Profiler.endSection();
 	}
 
-	protected void func_41002_a(int i, int j, int k, int l) {
+	protected void playStepSound(int i, int j, int k, int l) {
 		StepSound stepsound = Block.blocksList[l].stepSound;
 		if(worldObj.getBlockId(i, j + 1, k) == Block.snow.blockID) {
 			stepsound = Block.snow.stepSound;
@@ -871,12 +871,12 @@ public abstract class Entity {
 		return height / 2.0F;
 	}
 
-	public EntityItem dropItem(int i, int j) {
-		return dropItemWithOffset(i, j, 0.0F);
+	public EntityItem dropItem(int id, int amount) {
+		return dropItemWithOffset(id, amount, 0.0F);
 	}
 
-	public EntityItem dropItemWithOffset(int i, int j, float f) {
-		return entityDropItem(new ItemStack(i, j, 0), f);
+	public EntityItem dropItemWithOffset(int id, int amount, float offset) {
+		return entityDropItem(new ItemStack(id, amount, 0), offset);
 	}
 
 	public EntityItem entityDropItem(ItemStack itemstack, float f) {

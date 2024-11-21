@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.IINFO;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StringTranslate;
 import net.minecraft.util.Tessellator;
+import net.minecraft.util.math.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;

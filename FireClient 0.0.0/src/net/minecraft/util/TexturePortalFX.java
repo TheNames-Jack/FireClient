@@ -7,6 +7,7 @@ package net.minecraft.util;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            TextureFX, Block, BlockPortal, MathHelper

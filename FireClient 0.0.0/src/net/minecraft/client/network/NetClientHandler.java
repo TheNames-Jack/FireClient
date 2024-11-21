@@ -110,8 +110,8 @@ import net.minecraft.packet.Packet71Weather;
 import net.minecraft.packet.Packet8UpdateHealth;
 import net.minecraft.packet.Packet9Respawn;
 import net.minecraft.util.Explosion;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatList;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldClient;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.chunk.Chunk;
@@ -237,7 +237,7 @@ public class NetClientHandler extends NetHandler {
 			obj = new EntityFallingSand(worldClient, d, d1, d2, Block.gravel.blockID);
 		}
 		if(packet23vehiclespawn.type == 74) {
-			obj = new EntityFallingSand(worldClient, d, d1, d2, Block.field_41050_bK.blockID);
+			obj = new EntityFallingSand(worldClient, d, d1, d2, Block.ENDER_DRAGON_EGG.blockID);
 		}
 		if(obj != null) {
 			obj.serverPosX = packet23vehiclespawn.xPosition;

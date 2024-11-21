@@ -5,7 +5,6 @@ import java.nio.FloatBuffer;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.util.GLAllocation;
-import net.minecraft.util.MathHelper;
 
 public class ClippingHelperImpl extends ClippingHelper {
 

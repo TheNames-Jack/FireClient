@@ -7,7 +7,7 @@ package net.minecraft.entity;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.model.ModelBook;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            TileEntitySpecialRenderer, ModelBook, TileEntityEnchantmentTable, MathHelper, 

@@ -477,7 +477,7 @@ public abstract class BlockFluid extends Block
                 int l = world.getBlockMetadata(i, j, k);
                 if(l == 0)
                 {
-                    world.setBlockWithNotify(i, j, k, Block.obsidian.blockID);
+                    world.setBlockWithNotify(i, j, k, Block.OBSIDIAN.blockID);
                 } else
                 if(l <= 4)
                 {

@@ -1,6 +1,6 @@
 package net.minecraft.model;
 
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 public class ModelZombie extends ModelBiped {
 	public ModelZombie() {

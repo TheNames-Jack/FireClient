@@ -40,7 +40,7 @@ public class Session {
 		registeredBlocksList = new ArrayList();
 		registeredBlocksList.add(Block.stone);
 		registeredBlocksList.add(Block.cobblestone);
-		registeredBlocksList.add(Block.brick);
+		//registeredBlocksList.add(Block.brick);
 		registeredBlocksList.add(Block.dirt);
 		registeredBlocksList.add(Block.planks);
 		registeredBlocksList.add(Block.wood);
@@ -65,6 +65,6 @@ public class Session {
 		registeredBlocksList.add(Block.blockGold);
 		registeredBlocksList.add(Block.bookShelf);
 		registeredBlocksList.add(Block.tnt);
-		registeredBlocksList.add(Block.obsidian);
+		registeredBlocksList.add(Block.OBSIDIAN);
 	}
 }

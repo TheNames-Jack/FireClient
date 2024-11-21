@@ -9,7 +9,7 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntitySnowman;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:
@@ -87,7 +87,7 @@ public class BlockPumpkin extends Block
     public void onBlockAdded(World world, int i, int j, int k)
     {
         super.onBlockAdded(world, i, j, k);
-        if(world.getBlockId(i, j - 1, k) == Block.blockSnow.blockID && world.getBlockId(i, j - 2, k) == Block.blockSnow.blockID)
+        if(world.getBlockId(i, j - 1, k) == Block.SNOW_BLOCK.blockID && world.getBlockId(i, j - 2, k) == Block.SNOW_BLOCK.blockID)
         {
             if(!world.multiplayerWorld)
             {

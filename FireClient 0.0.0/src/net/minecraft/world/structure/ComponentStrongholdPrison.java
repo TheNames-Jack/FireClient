@@ -59,10 +59,10 @@ public class ComponentStrongholdPrison extends ComponentStronghold
             fillWithRandomizedBlocks(world, structureboundingbox, 4, 1, 3, 4, 3, 3, false, random, StructureStrongholdPieces.getStrongholdStones());
             fillWithRandomizedBlocks(world, structureboundingbox, 4, 1, 7, 4, 3, 7, false, random, StructureStrongholdPieces.getStrongholdStones());
             fillWithRandomizedBlocks(world, structureboundingbox, 4, 1, 9, 4, 3, 9, false, random, StructureStrongholdPieces.getStrongholdStones());
-            fillWithBlocks(world, structureboundingbox, 4, 1, 4, 4, 3, 6, Block.fenceIron.blockID, Block.fenceIron.blockID, false);
-            fillWithBlocks(world, structureboundingbox, 5, 1, 5, 7, 3, 5, Block.fenceIron.blockID, Block.fenceIron.blockID, false);
-            placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, 4, 3, 2, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.fenceIron.blockID, 0, 4, 3, 8, structureboundingbox);
+            fillWithBlocks(world, structureboundingbox, 4, 1, 4, 4, 3, 6, Block.IRON_BARS.blockID, Block.IRON_BARS.blockID, false);
+            fillWithBlocks(world, structureboundingbox, 5, 1, 5, 7, 3, 5, Block.IRON_BARS.blockID, Block.IRON_BARS.blockID, false);
+            placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, 4, 3, 2, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.IRON_BARS.blockID, 0, 4, 3, 8, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.doorSteel.blockID, func_35009_c(Block.doorSteel.blockID, 3), 4, 1, 2, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.doorSteel.blockID, func_35009_c(Block.doorSteel.blockID, 3) + 8, 4, 2, 2, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.doorSteel.blockID, func_35009_c(Block.doorSteel.blockID, 3), 4, 1, 8, structureboundingbox);

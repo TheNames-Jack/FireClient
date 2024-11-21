@@ -33,9 +33,9 @@ public class WorldGenReed extends WorldGenerator
             int l1 = 2 + random.nextInt(random.nextInt(3) + 1);
             for(int i2 = 0; i2 < l1; i2++)
             {
-                if(Block.reed.canBlockStay(world, i1, j1 + i2, k1))
+                if(Block.SUGAR_CANE.canBlockStay(world, i1, j1 + i2, k1))
                 {
-                    world.setBlock(i1, j1 + i2, k1, Block.reed.blockID);
+                    world.setBlock(i1, j1 + i2, k1, Block.SUGAR_CANE.blockID);
                 }
             }
 

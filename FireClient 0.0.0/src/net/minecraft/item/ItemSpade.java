@@ -26,13 +26,13 @@ public class ItemSpade extends ItemTool
         {
             return true;
         }
-        return block == Block.blockSnow;
+        return block == Block.SNOW_BLOCK;
     }
 
     static 
     {
         blocksEffectiveAgainst = (new Block[] {
-            Block.grass, Block.dirt, Block.sand, Block.gravel, Block.snow, Block.blockSnow, Block.blockClay, Block.tilledField, Block.slowSand, Block.mycelium
+            Block.grass, Block.dirt, Block.sand, Block.gravel, Block.snow, Block.SNOW_BLOCK, Block.CLAY_BLOCK, Block.tilledField, Block.SOUL_SAND, Block.mycelium
         });
     }
 }

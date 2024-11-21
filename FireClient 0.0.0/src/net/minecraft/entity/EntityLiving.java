@@ -13,12 +13,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumCreatureAttribute;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Profiler;
 import net.minecraft.util.StepSound;
 import net.minecraft.util.Vec3D;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public abstract class EntityLiving extends Entity {
@@ -47,7 +47,7 @@ public abstract class EntityLiving extends Entity {
 	protected int health;
 	public int prevHealth;
 	protected int field_40129_bA;
-	private int livingSoundTime;
+	public int livingSoundTime;
 	public int hurtTime;
 	public int maxHurtTime;
 	public float attackedAtYaw;

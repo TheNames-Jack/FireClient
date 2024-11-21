@@ -9,9 +9,9 @@ import org.lwjgl.opengl.GL11;
 import net.minecraft.block.Block;
 import net.minecraft.model.ModelBase;
 import net.minecraft.model.ModelMinecart;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Render;
 import net.minecraft.util.Vec3D;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            Render, ModelMinecart, EntityMinecart, Vec3D, 

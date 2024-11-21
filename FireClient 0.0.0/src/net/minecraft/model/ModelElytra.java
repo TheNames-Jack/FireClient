@@ -3,8 +3,8 @@ package net.minecraft.model;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityPlayer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3D;
+import net.minecraft.util.math.MathHelper;
 
 public class ModelElytra extends ModelBiped {
 	ModelRenderer leftWing;

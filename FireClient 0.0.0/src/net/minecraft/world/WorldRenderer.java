@@ -14,9 +14,9 @@ import net.minecraft.entity.RenderItem;
 import net.minecraft.entity.TileEntity;
 import net.minecraft.entity.TileEntityRenderer;
 import net.minecraft.entity.player.ICamera;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Tessellator;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkCache;
 

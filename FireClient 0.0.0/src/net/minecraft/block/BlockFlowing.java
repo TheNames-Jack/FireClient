@@ -279,7 +279,7 @@ public class BlockFlowing extends BlockFluid
     private boolean blockBlocksFlow(World world, int i, int j, int k)
     {
         int l = world.getBlockId(i, j, k);
-        if(l == Block.doorWood.blockID || l == Block.doorSteel.blockID || l == Block.signPost.blockID || l == Block.ladder.blockID || l == Block.reed.blockID)
+        if(l == Block.doorWood.blockID || l == Block.doorSteel.blockID || l == Block.signPost.blockID || l == Block.ladder.blockID || l == Block.SUGAR_CANE.blockID)
         {
             return true;
         }

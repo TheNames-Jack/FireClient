@@ -3,6 +3,8 @@ package net.minecraft.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.util.math.MathHelper;
+
 public class Vec3D {
 	private static List vectorList = new ArrayList();
 	private static int nextVector = 0;

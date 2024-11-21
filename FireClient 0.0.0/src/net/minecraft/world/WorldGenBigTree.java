@@ -6,7 +6,7 @@ package net.minecraft.world;
 
 import java.util.Random;
 
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 // Referenced classes of package net.minecraft.src:
 //            WorldGenerator, MathHelper, World
