@@ -96,10 +96,10 @@ public class ComponentVillageChurch extends ComponentVillage
         placeBlockAtCurrentPosition(world, Block.GLASS_PANE.blockID, 0, 0, 3, 6, structureboundingbox);
         placeBlockAtCurrentPosition(world, Block.GLASS_PANE.blockID, 0, 4, 3, 6, structureboundingbox);
         placeBlockAtCurrentPosition(world, Block.GLASS_PANE.blockID, 0, 2, 3, 8, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 2, 4, 7, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 1, 4, 6, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 3, 4, 6, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 2, 4, 5, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 2, 4, 7, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 1, 4, 6, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 3, 4, 6, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 2, 4, 5, structureboundingbox);
         int i = func_35009_c(Block.ladder.blockID, 4);
         for(int j = 1; j <= 9; j++)
         {

@@ -31,7 +31,7 @@ public class EntityBlaze extends EntityMob
         texture = "/mob/fire.png";
         isImmuneToFire = true;
         attackStrength = 6;
-        field_35171_bJ = 10;
+        experienceValue = 10;
     }
 
     public int getMaxHealth()

@@ -1210,7 +1210,7 @@ public abstract class Minecraft implements Runnable {
 							}
 
 							if(Keyboard.getEventKey() == Keyboard.KEY_J) {
-								thePlayer.worldObj.setBlock((int)(thePlayer.posX - 0.5F), (int)thePlayer.posY, (int)thePlayer.posZ, Block.endPortal.blockID);
+								thePlayer.worldObj.setBlock(MathHelper.floor_double(thePlayer.posX), MathHelper.floor_double(thePlayer.posY), MathHelper.floor_double(thePlayer.posZ), Block.endPortal.blockID);
 							}
 
 							if(gameSettings.keyBindPerspective.isPressed()) {

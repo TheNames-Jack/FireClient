@@ -72,10 +72,10 @@ public class ComponentStrongholdRoomCrossing extends ComponentStronghold
             placeBlockAtCurrentPosition(world, Block.stoneBrick.blockID, 0, 5, 1, 5, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.stoneBrick.blockID, 0, 5, 2, 5, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.stoneBrick.blockID, 0, 5, 3, 5, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 4, 3, 5, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 6, 3, 5, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 5, 3, 4, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 5, 3, 6, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 4, 3, 5, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 6, 3, 5, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 5, 3, 4, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 5, 3, 6, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.stairSingle.blockID, 0, 4, 1, 4, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.stairSingle.blockID, 0, 4, 1, 5, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.stairSingle.blockID, 0, 4, 1, 6, structureboundingbox);
@@ -130,7 +130,7 @@ public class ComponentStrongholdRoomCrossing extends ComponentStronghold
                 placeBlockAtCurrentPosition(world, Block.cobblestone.blockID, 0, 6, l, 6, structureboundingbox);
             }
 
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 5, 3, 5, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 5, 3, 5, structureboundingbox);
             for(int i1 = 2; i1 <= 8; i1++)
             {
                 placeBlockAtCurrentPosition(world, Block.planks.blockID, 0, 2, 3, i1, structureboundingbox);

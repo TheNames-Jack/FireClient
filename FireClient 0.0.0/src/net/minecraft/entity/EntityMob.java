@@ -28,7 +28,7 @@ public abstract class EntityMob extends EntityCreature
     {
         super(world);
         attackStrength = 2;
-        field_35171_bJ = 5;
+        experienceValue = 5;
     }
 
     public void onLivingUpdate()

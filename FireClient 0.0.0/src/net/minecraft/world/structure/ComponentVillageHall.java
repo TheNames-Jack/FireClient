@@ -109,7 +109,7 @@ public class ComponentVillageHall extends ComponentVillage
         placeBlockAtCurrentPosition(world, Block.stairDouble.blockID, 0, 6, 1, 2, structureboundingbox);
         placeBlockAtCurrentPosition(world, 0, 0, 2, 1, 0, structureboundingbox);
         placeBlockAtCurrentPosition(world, 0, 0, 2, 2, 0, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 2, 3, 1, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 2, 3, 1, structureboundingbox);
         placeDoorAtCurrentPosition(world, structureboundingbox, random, 2, 1, 0, func_35009_c(Block.doorWood.blockID, 1));
         if(getBlockIdAtCurrentPosition(world, 2, 0, -1, structureboundingbox) == 0 && getBlockIdAtCurrentPosition(world, 2, -1, -1, structureboundingbox) != 0)
         {
@@ -117,7 +117,7 @@ public class ComponentVillageHall extends ComponentVillage
         }
         placeBlockAtCurrentPosition(world, 0, 0, 6, 1, 5, structureboundingbox);
         placeBlockAtCurrentPosition(world, 0, 0, 6, 2, 5, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 6, 3, 4, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 6, 3, 4, structureboundingbox);
         placeDoorAtCurrentPosition(world, structureboundingbox, random, 6, 1, 5, func_35009_c(Block.doorWood.blockID, 1));
         for(int l = 0; l < 5; l++)
         {

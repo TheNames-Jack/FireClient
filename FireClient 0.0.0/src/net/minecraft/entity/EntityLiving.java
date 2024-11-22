@@ -56,7 +56,7 @@ public abstract class EntityLiving extends Entity {
 	public float prevCameraPitch;
 	public float cameraPitch;
 	protected boolean unused_flag;
-	protected int field_35171_bJ;
+	protected int experienceValue;
 	public int field_9326_T;
 	public float field_9325_U;
 	public float field_705_Q;
@@ -255,7 +255,7 @@ public abstract class EntityLiving extends Entity {
 	}
 
 	protected int func_36001_a(EntityPlayer entityplayer) {
-		return field_35171_bJ;
+		return experienceValue;
 	}
 
 	protected boolean func_35163_av() {
@@ -407,7 +407,7 @@ public abstract class EntityLiving extends Entity {
 		if(health <= 0) {
 			return false;
 		}
-		if(damagesource.func_40543_k() && isPotionActive(Potion.potionFireReistance)) {
+		if(damagesource.fireDamage() && isPotionActive(Potion.potionFireReistance)) {
 			return false;
 		}
 		field_704_R = 1.5F;

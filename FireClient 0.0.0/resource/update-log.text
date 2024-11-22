@@ -14,3 +14,14 @@ FireHack 0.0.0 - Push2:
 FireHack 0.0.0 - Push2:
 - Added end crystals
 - Made the bedrock end portal base spawn during generation
+
+FireHack 0.0.0 - Push3:
+- Added crafting recipe for end crystals
+- Added crafting recipe for fireworks
+- Dragon now has a chance to randomly teleport when health lower than half
+- Dragon now has a chance to shoot fireballs when health lower than a quater
+- Dragon now has a chance to perch on obsidian base
+- Dragon now has new sounds for teleportation, damage, wing flaps, growls, death, and respawn
+- The dragon now has boss music made by F4Close (WASTED987)
+- End pillars now generate indentically to those of 1.9
+- Added new sound resource folder in the "%appdata%\.minecraft\resources" called firehack for custom sounds that aren't handled by entities

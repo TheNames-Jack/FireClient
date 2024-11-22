@@ -59,10 +59,10 @@ public class ComponentVillageTorch extends ComponentVillage
         placeBlockAtCurrentPosition(world, Block.fence.blockID, 0, 1, 1, 0, structureboundingbox);
         placeBlockAtCurrentPosition(world, Block.fence.blockID, 0, 1, 2, 0, structureboundingbox);
         placeBlockAtCurrentPosition(world, Block.cloth.blockID, 15, 1, 3, 0, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 15, 0, 3, 0, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 15, 1, 3, 1, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 15, 2, 3, 0, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 15, 1, 3, -1, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 15, 0, 3, 0, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 15, 1, 3, 1, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 15, 2, 3, 0, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 15, 1, 3, -1, structureboundingbox);
         return true;
     }
 }

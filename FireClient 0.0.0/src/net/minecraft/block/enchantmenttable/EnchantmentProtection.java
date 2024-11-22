@@ -54,7 +54,7 @@ public class EnchantmentProtection extends Enchantment {
 		if(protectionType == 0) {
 			return j;
 		}
-		if(protectionType == 1 && damagesource.func_40543_k()) {
+		if(protectionType == 1 && damagesource.fireDamage()) {
 			return j;
 		}
 		if(protectionType == 2 && damagesource == DamageSource.fall) {

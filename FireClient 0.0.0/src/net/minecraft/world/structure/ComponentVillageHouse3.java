@@ -144,7 +144,7 @@ public class ComponentVillageHouse3 extends ComponentVillage
         placeBlockAtCurrentPosition(world, Block.planks.blockID, 0, 5, 5, 10, structureboundingbox);
         placeBlockAtCurrentPosition(world, 0, 0, 2, 1, 0, structureboundingbox);
         placeBlockAtCurrentPosition(world, 0, 0, 2, 2, 0, structureboundingbox);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 2, 3, 1, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 2, 3, 1, structureboundingbox);
         placeDoorAtCurrentPosition(world, structureboundingbox, random, 2, 1, 0, func_35009_c(Block.doorWood.blockID, 1));
         fillWithBlocks(world, structureboundingbox, 1, 0, -1, 3, 2, -1, 0, 0, false);
         if(getBlockIdAtCurrentPosition(world, 2, 0, -1, structureboundingbox) == 0 && getBlockIdAtCurrentPosition(world, 2, -1, -1, structureboundingbox) != 0)

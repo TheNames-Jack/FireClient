@@ -66,10 +66,10 @@ public class ComponentStrongholdStraight extends ComponentStronghold
         fillWithRandomizedBlocks(world, structureboundingbox, 0, 0, 0, 4, 4, 6, true, random, StructureStrongholdPieces.getStrongholdStones());
         placeDoor(world, random, structureboundingbox, field_35050_a, 1, 1, 0);
         placeDoor(world, random, structureboundingbox, EnumDoor.OPENING, 1, 1, 6);
-        randomlyPlaceBlock(world, structureboundingbox, random, 0.1F, 1, 2, 1, Block.torchWood.blockID, 0);
-        randomlyPlaceBlock(world, structureboundingbox, random, 0.1F, 3, 2, 1, Block.torchWood.blockID, 0);
-        randomlyPlaceBlock(world, structureboundingbox, random, 0.1F, 1, 2, 5, Block.torchWood.blockID, 0);
-        randomlyPlaceBlock(world, structureboundingbox, random, 0.1F, 3, 2, 5, Block.torchWood.blockID, 0);
+        randomlyPlaceBlock(world, structureboundingbox, random, 0.1F, 1, 2, 1, Block.TORCH.blockID, 0);
+        randomlyPlaceBlock(world, structureboundingbox, random, 0.1F, 3, 2, 1, Block.TORCH.blockID, 0);
+        randomlyPlaceBlock(world, structureboundingbox, random, 0.1F, 1, 2, 5, Block.TORCH.blockID, 0);
+        randomlyPlaceBlock(world, structureboundingbox, random, 0.1F, 3, 2, 5, Block.TORCH.blockID, 0);
         if(field_35048_b)
         {
             fillWithBlocks(world, structureboundingbox, 0, 1, 2, 0, 3, 4, 0, 0, false);

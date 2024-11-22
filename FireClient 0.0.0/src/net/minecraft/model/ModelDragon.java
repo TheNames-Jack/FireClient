@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.enderdragon.EntityEnderDragon;
+import net.minecraft.world.end.DragonFightManager;
 
 public class ModelDragon extends ModelBase {
 	private ModelRenderer head;
@@ -106,7 +107,12 @@ public class ModelDragon extends ModelBase {
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
 		GL11.glPushMatrix();
 		EntityEnderDragon entitydragon = (EntityEnderDragon) entity;
-		float f6 = entitydragon.field_40173_aw + (entitydragon.field_40172_ax - entitydragon.field_40173_aw) * field_40317_s;
+		float f6;
+		if(!DragonFightManager.isPerching) {
+			f6 = entitydragon.animationSpeed1 + (entitydragon.animationSpeed2 - entitydragon.animationSpeed1) * field_40317_s;
+		}else {
+			f6 = (entitydragon.animationSpeed1 + (entitydragon.animationSpeed2 - entitydragon.animationSpeed1) * field_40317_s) / 6;
+		}
 		jaw.rotateAngleX = (float) (Math.sin(f6 * 3.141593F * 2.0F) + 1.0D) * 0.2F;
 		float f7 = (float) (Math.sin(f6 * 3.141593F * 2.0F - 1.0F) + 1.0D);
 		f7 = (f7 * f7 * 1.0F + f7 * 2.0F) * 0.05F;
@@ -153,11 +159,13 @@ public class ModelDragon extends ModelBase {
 		body.render(scaleFactor);
 		for(int j = 0; j < 2; j++) {
 			GL11.glEnable(2884 /* GL_CULL_FACE */);
-			float f16 = f6 * 3.141593F * 2.0F;
-			wing.rotateAngleX = 0.125F - (float) Math.cos(f16) * 0.2F;
+			// Original value of f6: Math.PI
+			float wingFlapSpeed = f6 * 10.141593F * 2.0F;
+			// END
+			wing.rotateAngleX = 0.125F - (float) Math.cos(wingFlapSpeed) * 0.2F;
 			wing.rotateAngleY = 0.25F;
-			wing.rotateAngleZ = (float) (Math.sin(f16) + 0.125D) * 0.8F;
-			wingTip.rotateAngleZ = -(float) (Math.sin(f16 + 2.0F) + 0.5D) * 0.75F;
+			wing.rotateAngleZ = (float) (Math.sin(wingFlapSpeed) + 0.125D) * 0.8F;
+			wingTip.rotateAngleZ = -(float) (Math.sin(wingFlapSpeed + 2.0F) + 0.5D) * 0.75F;
 			rearLeg.rotateAngleX = 1.0F + f7 * 0.1F;
 			rearLegTip.rotateAngleX = 0.5F + f7 * 0.1F;
 			rearFoot.rotateAngleX = 0.75F + f7 * 0.1F;
@@ -172,7 +180,6 @@ public class ModelDragon extends ModelBase {
 				GL11.glCullFace(1028 /* GL_FRONT */);
 			}
 		}
-
 		GL11.glPopMatrix();
 		GL11.glCullFace(1029 /* GL_BACK */);
 		GL11.glDisable(2884 /* GL_CULL_FACE */);
@@ -196,7 +203,6 @@ public class ModelDragon extends ModelBase {
 			f10 = (float) ((double) f10 - Math.sin(neck.rotateAngleY) * Math.cos(neck.rotateAngleX) * 10D);
 			neck.render(scaleFactor);
 		}
-
 		GL11.glPopMatrix();
 	}
 

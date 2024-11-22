@@ -36,7 +36,7 @@ public class EntitySlime extends EntityLiving
         yOffset = 0.0F;
         slimeJumpDelay = rand.nextInt(20) + 10;
         setSlimeSize(i);
-        field_35171_bJ = i;
+        experienceValue = i;
     }
 
     protected void entityInit()

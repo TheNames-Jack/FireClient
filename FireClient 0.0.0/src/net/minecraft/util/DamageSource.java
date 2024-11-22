@@ -10,9 +10,9 @@ import net.minecraft.entity.EntityPlayer;
 
 public class DamageSource {
 	public static DamageSource flyIntoWall = (new DamageSource("flyIntoWall"));
-	public static DamageSource inFire = (new DamageSource("inFire")).func_40546_j();
-	public static DamageSource onFire = (new DamageSource("onFire")).setDamageBypassesArmor().func_40546_j();
-	public static DamageSource lava = (new DamageSource("lava")).func_40546_j();
+	public static DamageSource inFire = (new DamageSource("inFire")).setFireDamage();
+	public static DamageSource onFire = (new DamageSource("onFire")).setDamageBypassesArmor().setFireDamage();
+	public static DamageSource lava = (new DamageSource("lava")).setFireDamage();
 	public static DamageSource inWall = (new DamageSource("inWall")).setDamageBypassesArmor();
 	public static DamageSource drown = (new DamageSource("drown")).setDamageBypassesArmor();
 	public static DamageSource starve = (new DamageSource("starve")).setDamageBypassesArmor();
@@ -25,7 +25,7 @@ public class DamageSource {
 	private boolean isBlockable;
 	private boolean isDamageAllowedInCreativeMode;
 	private float hungerDamage;
-	private boolean field_40549_q;
+	private boolean fireDamage;
 	private boolean field_40548_r;
 	public String damageType;
 
@@ -42,7 +42,7 @@ public class DamageSource {
 	}
 
 	public static DamageSource causeFireballDamage(EntityFireball entityfireball, Entity entity) {
-		return (new EntityDamageSourceIndirect("fireball", entityfireball, entity)).func_40546_j().func_40544_c();
+		return (new EntityDamageSourceIndirect("fireball", entityfireball, entity)).setFireDamage().func_40544_c();
 	}
 
 	public static DamageSource causeThrownDamage(Entity entity, Entity entity1) {
@@ -100,17 +100,16 @@ public class DamageSource {
 		return this;
 	}
 
-	protected DamageSource func_40546_j() {
-		field_40549_q = true;
+	protected DamageSource setFireDamage() {
+		fireDamage = true;
 		return this;
 	}
 
-	public boolean func_40543_k() {
-		return field_40549_q;
+	public boolean fireDamage() {
+		return fireDamage;
 	}
 
-	public String func_40545_l() {
+	public String getDamageType() {
 		return damageType;
 	}
-
 }

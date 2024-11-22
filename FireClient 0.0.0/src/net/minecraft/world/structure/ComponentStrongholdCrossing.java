@@ -114,7 +114,7 @@ public class ComponentStrongholdCrossing extends ComponentStronghold
         fillWithBlocks(world, structureboundingbox, 4, 5, 7, 4, 5, 9, Block.stairSingle.blockID, Block.stairSingle.blockID, false);
         fillWithBlocks(world, structureboundingbox, 8, 5, 7, 8, 5, 9, Block.stairSingle.blockID, Block.stairSingle.blockID, false);
         fillWithBlocks(world, structureboundingbox, 5, 5, 7, 7, 5, 9, Block.stairDouble.blockID, Block.stairDouble.blockID, false);
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 6, 5, 6, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 6, 5, 6, structureboundingbox);
         return true;
     }
 }

@@ -17,46 +17,59 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class DragonFightManager {
+	private static Minecraft minecraft;
+
+	public static final float MAX_RESPAWN_TIMER = 200F;
+	public static final int PERCH_RND_BOUND = 800;
+	public static final int TELEPORT_RND_BOUND = 2;
+	public static final int FIREBALL_RND_BOUND = 35;
+	public static final int MAX_PERCH_TIME = 500;
+
+	public static int perchTimer = 0;
+	public static int respawnTimer = 0;
+
 	public static List<EntityEnderCrystal> pillarCrystals = new ArrayList<EntityEnderCrystal>();
 	public static List<EntityEnderCrystal> respawnCrystals = new ArrayList<EntityEnderCrystal>();
 	public static List<LocationInteger> pillarCystalLocations = new ArrayList<LocationInteger>();
+
 	public static boolean pillarsGenerated = false;
 	public static boolean bossMusicPlayed = false;
-	public static final float MAX_RESPAWN_TIMER = 200F;
-	public static int respawnTimer = 0;
-	private static Minecraft minecraft;
-
 	public static boolean isOriginalEnderDragon = true;
 	public static boolean enderDragonExists = false;
 	public static boolean isRespawning = false;
 	public static boolean isDying = false;
 	public static boolean isFollowingPlayer = false;
-	public static boolean isPearching = false;
+	public static boolean isPerching = false;
+	public static boolean reachedPerchPosition = false;
+	public static boolean canShootFireBall = false;
+	public static boolean canTeleport = false;
+
+	public static EntityEnderDragon dragon;
 
 	public static void generatePillars(World world, Random random, boolean firstGeneration) {
 		// Define pillar data
 		int[][] pillarData = {
+				// Radius, Height
 				{
-						3, 76, 1596
-				}, // Radius, Height, Total blocks
-				{
-						3, 79, 1659
+						3, 76
 				}, {
-						3, 82, 1722
+						3, 79
 				}, {
-						4, 85, 3145
+						3, 82
 				}, {
-						4, 88, 3256
+						4, 85
 				}, {
-						4, 91, 3367
+						4, 88
 				}, {
-						5, 94, 5358
+						4, 91
 				}, {
-						5, 97, 5529
+						5, 94
 				}, {
-						5, 100, 5700
+						5, 97
 				}, {
-						6, 103, 9167
+						5, 100
+				}, {
+						6, 103
 				}
 		};
 		int maxPillars = pillarData.length;
@@ -192,7 +205,7 @@ public class DragonFightManager {
 	public static void setEndPortal(World worldObj) {
 		// Find the next available bedrock block from Y=0 to Y=127
 		int portalY = -1;
-		for(int y = 0; y < 128; y++) {
+		for(int y = 0; y < worldObj.worldYMax - 1; y++) {
 			int blockID = worldObj.getBlockId(0, y, 0); // Check the block at the center (X=0, Z=0)
 			if(blockID == Block.BEDROCK.blockID) { // Check if it's a bedrock block
 				boolean portalExists = false;
@@ -207,7 +220,7 @@ public class DragonFightManager {
 					if(portalExists) break;
 				}
 				if(!portalExists) {
-					portalY = y + 1; // Use this Y level and lower it by 2
+					portalY = y + 1;
 					break;
 				}
 			}
@@ -253,10 +266,10 @@ public class DragonFightManager {
 		worldObj.setBlock(0, portalY + 0, 0, Block.BEDROCK.blockID);
 		worldObj.setBlock(0, portalY + 1, 0, Block.BEDROCK.blockID);
 		worldObj.setBlock(0, portalY + 2, 0, Block.BEDROCK.blockID);
-		worldObj.setBlock(-1, portalY + 2, 0, Block.torchWood.blockID);
-		worldObj.setBlock(1, portalY + 2, 0, Block.torchWood.blockID);
-		worldObj.setBlock(0, portalY + 2, -1, Block.torchWood.blockID);
-		worldObj.setBlock(0, portalY + 2, 1, Block.torchWood.blockID);
+		worldObj.setBlock(-1, portalY + 2, 0, Block.TORCH.blockID);
+		worldObj.setBlock(1, portalY + 2, 0, Block.TORCH.blockID);
+		worldObj.setBlock(0, portalY + 2, -1, Block.TORCH.blockID);
+		worldObj.setBlock(0, portalY + 2, 1, Block.TORCH.blockID);
 		worldObj.setBlock(0, portalY + 3, 0, Block.BEDROCK.blockID);
 		worldObj.setBlock(0, portalY + 4, 0, Block.ENDER_DRAGON_EGG.blockID); // Dragon egg block
 		BlockEndPortal.canBePlaced = false;
@@ -270,7 +283,7 @@ public class DragonFightManager {
 			for(int y = currentWorld.worldYMax - 1; y >= 0; y--) {
 				int blockID = currentWorld.getBlockId(0, y, 0); // Check the block at the center (X=0, Z=0)
 				if(blockID != 0) { // If it's a solid block
-					portalY = y - 2; // Subtract 2 for the portal position
+					portalY = y + 1;
 					break;
 				}
 			}
@@ -290,7 +303,7 @@ public class DragonFightManager {
 						if(portalExists) break;
 					}
 					if(portalExists) {
-						portalY = y + 1; // Use this Y level for regeneration
+						portalY = y + 1;
 						break;
 					}
 				}
@@ -336,20 +349,32 @@ public class DragonFightManager {
 		currentWorld.setBlock(0, portalY + 1, 0, Block.BEDROCK.blockID);
 		currentWorld.setBlock(0, portalY + 2, 0, Block.BEDROCK.blockID);
 		currentWorld.setBlock(0, portalY + 3, 0, Block.BEDROCK.blockID);
-		currentWorld.setBlock(-1, portalY + 2, 0, Block.torchWood.blockID);
-		currentWorld.setBlock(1, portalY + 2, 0, Block.torchWood.blockID);
-		currentWorld.setBlock(0, portalY + 2, -1, Block.torchWood.blockID);
-		currentWorld.setBlock(0, portalY + 2, 1, Block.torchWood.blockID);
+		currentWorld.setBlock(-1, portalY + 2, 0, Block.TORCH.blockID);
+		currentWorld.setBlock(1, portalY + 2, 0, Block.TORCH.blockID);
+		currentWorld.setBlock(0, portalY + 2, -1, Block.TORCH.blockID);
+		currentWorld.setBlock(0, portalY + 2, 1, Block.TORCH.blockID);
 	}
 
 	public static void handleDragonFight() {
 		DragonFightManager.respawnCrystals.clear();
+		if(!DragonFightManager.isDying) {
+			if(dragon.getEntityHealth() <= (dragon.getMaxHealth() / 2)) {
+				canTeleport = true;
+				if(dragon.getEntityHealth() <= (dragon.getMaxHealth() / 3)) {
+					canShootFireBall = true;
+				}
+			}
+		}
 	}
 
 	public static void respawnEnderdragon(World world) {
+		reachedPerchPosition = false;
 		enderDragonExists = true;
 		isRespawning = true;
-		EntityEnderDragon dragon = new EntityEnderDragon(world);
+		isDying = false;
+		canShootFireBall = false;
+		canTeleport = false;
+		dragon = new EntityEnderDragon(world);
 		world.entityJoinedWorld(dragon);
 		dragon.setPosition(0, 128, 0);
 		generatePillars(world, new Random(), false);
@@ -364,7 +389,9 @@ public class DragonFightManager {
 		isRespawning = false;
 		isOriginalEnderDragon = false;
 		enderDragonExists = false;
-		if(bossMusicPlayed) {
+		canShootFireBall = false;
+		canTeleport = false;
+		if(bossMusicPlayed && minecraft.sndManager != null) {
 			minecraft.sndManager.sndSystem.stop(EnumSoundType.BgMusicKeepAlive.name());
 			bossMusicPlayed = false;
 		}
@@ -375,7 +402,7 @@ public class DragonFightManager {
 			minecraft = minecraftInstance;
 		}
 
-		if(!bossMusicPlayed) {
+		if(!bossMusicPlayed && minecraft.sndManager != null) {
 			minecraft.sndManager.playMusic(EnumSound.ENDER_DRAGON_BOSS_MUSIC, 1F, 1F, false);
 			bossMusicPlayed = true;
 		}

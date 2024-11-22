@@ -115,10 +115,10 @@ public class CraftingManager {
 		addRecipe(new ItemStack(Item.STICK, 4), new Object[]{
 				"#", "#", Character.valueOf('#'), Block.planks
 		});
-		addRecipe(new ItemStack(Block.torchWood, 4), new Object[]{
+		addRecipe(new ItemStack(Block.TORCH, 4), new Object[]{
 				"X", "#", Character.valueOf('X'), Item.coal, Character.valueOf('#'), Item.STICK
 		});
-		addRecipe(new ItemStack(Block.torchWood, 4), new Object[]{
+		addRecipe(new ItemStack(Block.TORCH, 4), new Object[]{
 				"X", "#", Character.valueOf('X'), new ItemStack(Item.coal, 1, 1), Character.valueOf('#'), Item.STICK
 		});
 		addRecipe(new ItemStack(Item.EMPTY_BOWl, 4), new Object[]{
@@ -146,7 +146,7 @@ public class CraftingManager {
 				" B ", "###", Character.valueOf('#'), Block.cobblestone, Character.valueOf('B'), Item.BLAZE_ROD
 		});
 		addRecipe(new ItemStack(Block.pumpkinLantern, 1), new Object[]{
-				"A", "B", Character.valueOf('A'), Block.pumpkin, Character.valueOf('B'), Block.torchWood
+				"A", "B", Character.valueOf('A'), Block.pumpkin, Character.valueOf('B'), Block.TORCH
 		});
 		addRecipe(new ItemStack(Item.CHEST_MINECART, 1), new Object[]{
 				"A", "B", Character.valueOf('A'), Block.chest, Character.valueOf('B'), Item.EMPTY_MINECART
@@ -242,7 +242,10 @@ public class CraftingManager {
 				"###", "###", "###", Character.valueOf('#'), Item.SILK
 		});
 		addShapelessRecipe(new ItemStack(Item.FIREWORK, 3), new Object[]{
-			Item.PAPER, Item.GUNPOWDER
+				Item.PAPER, Item.GUNPOWDER
+		});
+		addRecipe(new ItemStack(Item.ENDER_CRYSTAL, 1), new Object[]{
+				"GGG", "GEG", "GTG", Character.valueOf('G'), Block.glass, Character.valueOf('E'), Item.ENDER_EYE, Character.valueOf('T'), Item.GHAST_TEAR
 		});
 		Collections.sort(recipes, new RecipeSorter(this));
 		System.out.println((new StringBuilder()).append(recipes.size()).append(" recipes").toString());

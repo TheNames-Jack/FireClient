@@ -175,8 +175,8 @@ public class ComponentMineshaftCorridor extends StructureComponent {
 			randomlyPlaceBlock(world, structureboundingbox, random, 0.05F, 2, 2, l - 2, Block.web.blockID, 0);
 			randomlyPlaceBlock(world, structureboundingbox, random, 0.05F, 0, 2, l + 2, Block.web.blockID, 0);
 			randomlyPlaceBlock(world, structureboundingbox, random, 0.05F, 2, 2, l + 2, Block.web.blockID, 0);
-			randomlyPlaceBlock(world, structureboundingbox, random, 0.05F, 1, 2, l - 1, Block.torchWood.blockID, 0);
-			randomlyPlaceBlock(world, structureboundingbox, random, 0.05F, 1, 2, l + 1, Block.torchWood.blockID, 0);
+			randomlyPlaceBlock(world, structureboundingbox, random, 0.05F, 1, 2, l - 1, Block.TORCH.blockID, 0);
+			randomlyPlaceBlock(world, structureboundingbox, random, 0.05F, 1, 2, l + 1, Block.TORCH.blockID, 0);
 			if(random.nextInt(100) == 0) {
 				createTreasureChestAtCurrentPosition(world, structureboundingbox, random, 2, 0, l - 1, StructureMineshaftPieces.getTreasurePieces(), 3 + random.nextInt(4));
 			}

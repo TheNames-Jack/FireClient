@@ -116,7 +116,7 @@ public class ComponentVillageHouse4_Garden extends ComponentVillage
             placeBlockAtCurrentPosition(world, Block.ladder.blockID, i, 3, 3, 3, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.ladder.blockID, i, 3, 4, 3, structureboundingbox);
         }
-        placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 2, 3, 1, structureboundingbox);
+        placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 2, 3, 1, structureboundingbox);
         for(int j = 0; j < 5; j++)
         {
             for(int k = 0; k < 5; k++)

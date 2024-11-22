@@ -2798,7 +2798,6 @@ public class World implements IBlockAccess {
 		for(int j1 = 0; j1 < worldAccesses.size(); j1++) {
 			((IWorldAccess) worldAccesses.get(j1)).playAuxSFX(entityplayer, i, j, k, l, i1);
 		}
-
 	}
 
 	public int func_35452_b() {

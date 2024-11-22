@@ -71,8 +71,8 @@ public class ComponentStrongholdLibrary extends ComponentStronghold
             {
                 fillWithBlocks(world, structureboundingbox, 1, 1, i, 1, 4, i, Block.planks.blockID, Block.planks.blockID, false);
                 fillWithBlocks(world, structureboundingbox, 12, 1, i, 12, 4, i, Block.planks.blockID, Block.planks.blockID, false);
-                placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 2, 3, i, structureboundingbox);
-                placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, 11, 3, i, structureboundingbox);
+                placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 2, 3, i, structureboundingbox);
+                placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, 11, 3, i, structureboundingbox);
                 if(field_35057_c)
                 {
                     fillWithBlocks(world, structureboundingbox, 1, 6, i, 1, 9, i, Block.planks.blockID, Block.planks.blockID, false);
@@ -134,12 +134,12 @@ public class ComponentStrongholdLibrary extends ComponentStronghold
             placeBlockAtCurrentPosition(world, Block.fence.blockID, 0, byte1 - 1, 7, byte2 + 1, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.fence.blockID, 0, byte1, 7, byte2 - 1, structureboundingbox);
             placeBlockAtCurrentPosition(world, Block.fence.blockID, 0, byte1, 7, byte2 + 1, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, byte1 - 2, 8, byte2, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, byte1 + 1, 8, byte2, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, byte1 - 1, 8, byte2 - 1, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, byte1 - 1, 8, byte2 + 1, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, byte1, 8, byte2 - 1, structureboundingbox);
-            placeBlockAtCurrentPosition(world, Block.torchWood.blockID, 0, byte1, 8, byte2 + 1, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, byte1 - 2, 8, byte2, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, byte1 + 1, 8, byte2, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, byte1 - 1, 8, byte2 - 1, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, byte1 - 1, 8, byte2 + 1, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, byte1, 8, byte2 - 1, structureboundingbox);
+            placeBlockAtCurrentPosition(world, Block.TORCH.blockID, 0, byte1, 8, byte2 + 1, structureboundingbox);
         }
         createTreasureChestAtCurrentPosition(world, structureboundingbox, random, 3, 3, 5, field_35056_b, 1 + random.nextInt(4));
         if(field_35057_c)

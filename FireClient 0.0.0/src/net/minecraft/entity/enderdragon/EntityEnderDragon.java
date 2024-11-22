@@ -9,7 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityEnderCrystal;
-import net.minecraft.entity.EntityItem;
+import net.minecraft.entity.EntityFireball;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityPlayer;
 import net.minecraft.entity.EntityXPOrb;
@@ -25,7 +25,7 @@ import net.minecraft.world.end.DragonFightManager;
 
 public class EntityEnderDragon extends EntityDragonBase {
 	public double targetX;
-	public double ederdragonHealth;
+	public double targetY;
 	public double targetZ;
 	public double field_40162_d[][];
 	public int field_40164_e;
@@ -37,9 +37,9 @@ public class EntityEnderDragon extends EntityDragonBase {
 	public DragonPart field_40168_at;
 	public DragonPart field_40175_au;
 	public DragonPart field_40174_av;
-	public float field_40173_aw;
-	public float field_40172_ax;
-	public boolean field_40163_ay;
+	public float animationSpeed1;
+	public float animationSpeed2;
+	public boolean shouldChangeBehviour;
 	public boolean field_40161_az;
 	private EntityPlayer playerEntity;
 	public int deathUpdateTimer;
@@ -52,32 +52,35 @@ public class EntityEnderDragon extends EntityDragonBase {
 		this.world = world;
 		field_40162_d = new double[64][3];
 		field_40164_e = -1;
-		field_40173_aw = 0.0F;
-		field_40172_ax = 0.0F;
-		field_40163_ay = false;
+		animationSpeed1 = 0.0F;
+		animationSpeed2 = 0.0F;
+		shouldChangeBehviour = false;
 		field_40161_az = false;
 		deathUpdateTimer = 0;
 		dragonPartArray = (new DragonPart[]{
 				dragonPartHead = new DragonPart(this, "head", 6F, 6F), field_40171_aq = new DragonPart(this, "body", 8F, 8F), field_40170_ar = new DragonPart(this, "tail", 4F, 4F), field_40169_as = new DragonPart(this, "tail", 4F, 4F),
 				field_40168_at = new DragonPart(this, "tail", 4F, 4F), field_40175_au = new DragonPart(this, "wing", 4F, 4F), field_40174_av = new DragonPart(this, "wing", 4F, 4F)
 		});
-		maxHealth = 200;
+		maxHealth = 1024;
 		maxDeathUpdateTimer = 200;
 		setEntityHealth(maxHealth);
-		if(DragonFightManager.isOriginalEnderDragon) {
+		if(DragonFightManager.isOriginalEnderDragon || rand.nextInt(10000) == 0) {
 			texture = "/mob/enderdragon/ender.png";
 		}else {
 			texture = "/mob/enderdragon/skeleton_enderdragon.png";
 		}
 		setSize(16F, 8F);
-		// Changed so dragon doesn't faze through island
+		// Changed so dragon doesn't phase through island
 		noClip = false;
 		// END
 		isImmuneToFire = true;
-		ederdragonHealth = 100D;
+		targetY = 100D;
 		ignoreFrustumCheck = true;
 		noClip = true;
 		DragonFightManager.enderDragonExists = true;
+		if(DragonFightManager.dragon == null) {
+			DragonFightManager.dragon = this;
+		}
 	}
 
 	protected void entityInit() {
@@ -111,11 +114,11 @@ public class EntityEnderDragon extends EntityDragonBase {
 		if(!DragonFightManager.isRespawning) {
 			DragonFightManager.handleDragonFight();
 			// TODO TESTING REMOVE WHEN DONE
-			// health = 0;
+//			health = 0;
 			// END
-			field_40173_aw = field_40172_ax;
+			animationSpeed1 = animationSpeed2;
 			updateDragonHealthData();
-			if(health <= 0) {
+			if(DragonFightManager.isDying) {
 				float f = (rand.nextFloat() - 0.5F) * 8F;
 				float f2 = (rand.nextFloat() - 0.5F) * 4F;
 				float f4 = (rand.nextFloat() - 0.5F) * 8F;
@@ -126,9 +129,9 @@ public class EntityEnderDragon extends EntityDragonBase {
 			float f1 = 0.2F / (MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ) * 10F + 1.0F);
 			f1 *= (float) Math.pow(2D, motionY);
 			if(field_40161_az) {
-				field_40172_ax += f1 * 0.5F;
+				animationSpeed2 += f1 * 0.5F;
 			}else {
-				field_40172_ax += f1;
+				animationSpeed2 += f1;
 			}
 			for(; rotationYaw >= 180F; rotationYaw -= 360F) {
 			}
@@ -163,7 +166,7 @@ public class EntityEnderDragon extends EntityDragonBase {
 				}
 			}else {
 				double d1 = targetX - posX;
-				double d3 = ederdragonHealth - posY;
+				double d3 = targetY - posY;
 				double d5 = targetZ - posZ;
 				double d7 = d1 * d1 + d3 * d3 + d5 * d5;
 				if(playerEntity != null) {
@@ -176,13 +179,16 @@ public class EntityEnderDragon extends EntityDragonBase {
 					if(d13 > 10D) {
 						d13 = 10D;
 					}
-					ederdragonHealth = playerEntity.boundingBox.minY + d13;
+					targetY = playerEntity.boundingBox.minY + d13;
 				}else {
 					targetX += rand.nextGaussian() * 2D;
 					targetZ += rand.nextGaussian() * 2D;
 				}
-				if(field_40163_ay || d7 < 100D || d7 > 22500D || isCollidedHorizontally || isCollidedVertically) {
-					followPlayer();
+				if(shouldChangeBehviour || d7 < 100D || d7 > 22500D || isCollidedHorizontally || isCollidedVertically) {
+					if(!DragonFightManager.isPerching && DragonFightManager.canTeleport && rand.nextInt(DragonFightManager.TELEPORT_RND_BOUND) == 0) {
+						teleportRandomly();
+					}
+					determineBehaviour();
 				}
 				d3 /= MathHelper.sqrt_double(d1 * d1 + d5 * d5);
 				float f10 = 0.6F;
@@ -209,7 +215,7 @@ public class EntityEnderDragon extends EntityDragonBase {
 				if(d11 < -50D) {
 					d11 = -50D;
 				}
-				Vec3D vec3d = Vec3D.createVector(targetX - posX, ederdragonHealth - posY, targetZ - posZ).normalize();
+				Vec3D vec3d = Vec3D.createVector(targetX - posX, targetY - posY, targetZ - posZ).normalize();
 				Vec3D vec3d1 = Vec3D.createVector(MathHelper.sin((rotationYaw * 3.141593F) / 180F), motionY, -MathHelper.cos((rotationYaw * 3.141593F) / 180F)).normalize();
 				float f18 = (float) (vec3d1.dotProduct(vec3d) + 0.5D) / 1.5F;
 				if(f18 < 0.0F) {
@@ -224,13 +230,22 @@ public class EntityEnderDragon extends EntityDragonBase {
 				randomYawVelocity += d11 * (0.69999998807907104D / d14 / (double) f19);
 				rotationYaw += randomYawVelocity * 0.1F;
 				float f20 = (float) (2D / (d14 + 1.0D));
-				float f21 = 0.06F;
-				moveFlying(0.0F, -1F, f21 * (f18 * f20 + (1.0F - f20)));
+				// Original Speed: 0.06
+				float movementSpeed = 0.1F;
+				// END
+
+				handleBehviour(f18, f20, movementSpeed);
+
 				if(field_40161_az) {
 					moveEntity(motionX * 0.80000001192092896D, motionY * 0.80000001192092896D, motionZ * 0.80000001192092896D);
-				}else {
+				}else if(!DragonFightManager.isPerching) {
 					moveEntity(motionX, motionY, motionZ);
 				}
+
+				if(health <= 0) {
+					DragonFightManager.isPerching = true;
+				}
+
 				Vec3D vec3d2 = Vec3D.createVector(motionX, motionY, motionZ).normalize();
 				float f22 = (float) (vec3d2.dotProduct(vec3d1) + 1.0D) / 2.0F;
 				f22 = 0.8F + 0.15F * f22;
@@ -269,6 +284,9 @@ public class EntityEnderDragon extends EntityDragonBase {
 				collideWithEntities(worldObj.getEntitiesWithinAABBExcludingEntity(this, field_40174_av.boundingBox.expand(4D, 2D, 4D).offset(0.0D, -2D, 0.0D)));
 				attackEntitiesInList(worldObj.getEntitiesWithinAABBExcludingEntity(this, dragonPartHead.boundingBox.expand(1.0D, 1.0D, 1.0D)));
 			}
+			if(maxHurtTime > 0) {
+				maxHurtTime--;
+			}
 			double ad[] = func_40160_a(5, 1.0F);
 			double ad1[] = func_40160_a(0, 1.0F);
 			float f11 = MathHelper.sin((rotationYaw * 3.141593F) / 180F - randomYawVelocity * 0.01F);
@@ -302,6 +320,190 @@ public class EntityEnderDragon extends EntityDragonBase {
 		}else {
 			onRespawnUpdate();
 		}
+	}
+
+	// Handle behaviour movement and statements
+	private void handleBehviour(float f18, float f20, float f21) {
+		// Get the highest block at (0, 0)
+		int highestBlockY = worldObj.getHeightValue(0, 0);
+		// Calculate the direction vector towards (0, highestBlockY, 0)
+		double targetX = 0.5D; // Centered on the block
+		double targetY = highestBlockY + 1; // Hover slightly above the block
+		double targetZ = 0.5D; // Centered on the block
+
+		if(!DragonFightManager.isPerching) {
+			moveFlying(0.0F, -1F, f21 * (f18 * f20 + (1.0F - f20)));
+			if(!DragonFightManager.isFollowingPlayer && rand.nextInt(DragonFightManager.PERCH_RND_BOUND) == 0) {
+				DragonFightManager.isPerching = true;
+				DragonFightManager.reachedPerchPosition = false;
+			}
+		}
+
+		// If the dragon is perching
+		if(DragonFightManager.isPerching) {
+			if(DragonFightManager.reachedPerchPosition && DragonFightManager.perchTimer < DragonFightManager.MAX_PERCH_TIME) {
+				DragonFightManager.perchTimer++;
+			}else if(DragonFightManager.perchTimer >= DragonFightManager.MAX_PERCH_TIME) {
+				DragonFightManager.perchTimer = 0;
+				DragonFightManager.isPerching = false;
+				DragonFightManager.reachedPerchPosition = false;
+			}
+
+			if(!DragonFightManager.reachedPerchPosition) {
+				double dx = targetX - posX;
+				double dy = targetY - posY;
+				double dz = targetZ - posZ;
+
+				// Normalize the direction vector to get unit vectors
+				double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+				// Check if the dragon has reached the target position
+				double stoppingDistance = 1.5D; // Radius for "reached" condition
+				if(distance <= stoppingDistance) {
+					DragonFightManager.reachedPerchPosition = true;
+				}else {
+					// Continue moving towards the target
+					if(distance > 0.0D) {
+						dx /= distance;
+						dy /= distance;
+						dz /= distance;
+					}
+
+					// Use the direction vector for rotation
+					rotationYaw = (float) (Math.atan2(dz, dx) * (180.0D / Math.PI)) + 90.0F;
+					rotationPitch = (float) -(Math.atan2(dy, Math.sqrt(dx * dx + dz * dz)) * (180.0D / Math.PI));
+
+					// Move towards the target using moveFlying
+					moveFlying(0.2F, -1.0F, f21);
+					if(posY > targetY) {
+						moveEntity(motionX, -f21 * 6, motionZ);
+					}else if(posY < targetY) {
+						moveEntity(motionX, f21 * 6, motionZ);
+					}
+				}
+			}else {
+				setPosition(targetX, targetY, targetZ);
+			}
+
+			if(health <= 0) {
+				DragonFightManager.isDying = true;
+			}
+		}
+
+		if(DragonFightManager.canShootFireBall && rand.nextInt(DragonFightManager.FIREBALL_RND_BOUND) == 0) {
+			shootFireBall();
+		}
+	}
+
+	private void shootFireBall() {
+		if(playerEntity != null) {
+			// Calculate the direction from the dragon to the player
+			double dX = playerEntity.posX - posX;
+			double dY = (playerEntity.boundingBox.minY + (double) (playerEntity.height / 2.0F)) - (posY + (double) (height / 2.0F));
+			double dZ = playerEntity.posZ - posZ;
+
+			// Normalize the direction vector
+			double distance = Math.sqrt(dX * dX + dY * dY + dZ * dZ);
+			if(distance == 0.0) return; // Avoid division by zero
+			dX /= distance;
+			dY /= distance;
+			dZ /= distance;
+
+			// Play sound effect for fireball launch
+			worldObj.playAuxSFXAtEntity(null, 1008, (int) posX, (int) posY, (int) posZ, 0);
+
+			// Create the fireball entity
+			EntityFireball entityFireball = new EntityFireball(worldObj, this, dX, dY, dZ);
+
+			// Position the fireball at the dragon's head or another appropriate location
+			double fireballStartOffset = 4.0D; // Distance from the dragon
+			entityFireball.posX = posX + dX * fireballStartOffset;
+			entityFireball.posY = posY + (double) (height / 3.0F);
+			entityFireball.posZ = posZ + dZ * fireballStartOffset;
+
+			// Set the velocity of the fireball based on the direction
+			double fireballSpeed = 4.0D; // Adjust speed as needed
+			entityFireball.motionX = dX * fireballSpeed;
+			entityFireball.motionY = dY * fireballSpeed;
+			entityFireball.motionZ = dZ * fireballSpeed;
+
+			// Spawn the fireball in the world
+			if(!world.multiplayerWorld) {
+				worldObj.entityJoinedWorld(entityFireball);
+			}
+		}
+	}
+
+	private boolean teleportRandomly() {
+		if(posX > -50 && posX < 50 && posY > 60 && posY < 128 && posZ > -50 && posZ < 50) {
+			double positionX = posX + (rand.nextDouble() - 0.5D) * 64D;
+			double positionY = posY + (double) (rand.nextInt(128) - 32);
+			double positionZ = posZ + (rand.nextDouble() - 0.5D) * 64D;
+			return teleportTo(positionX, positionY, positionZ);
+		}else {
+			return false;
+		}
+	}
+
+	private boolean teleportTo(double tpX, double tpY, double tpZ) {
+		double originalX = posX;
+		double originalY = posY;
+		double originalZ = posZ;
+		boolean shouldTeleport = false;
+		for(int attempt = 0; attempt < 10; attempt++) { // Retry up to 10 times
+			setPosition(tpX, tpY, tpZ);
+			// Check if the area within the dragon's AABB is clear
+			AxisAlignedBB aabb = this.boundingBox.offset(tpX - posX, tpY - posY, tpZ - posZ);
+			boolean isAreaClear = true;
+			for(int x = MathHelper.floor_double(aabb.minX); x <= MathHelper.floor_double(aabb.maxX); x++) {
+				for(int y = MathHelper.floor_double(aabb.minY); y <= MathHelper.floor_double(aabb.maxY); y++) {
+					for(int z = MathHelper.floor_double(aabb.minZ); z <= MathHelper.floor_double(aabb.maxZ); z++) {
+						int blockID = worldObj.getBlockId(x, y, z);
+						if(blockID != 0) { // Not air
+							isAreaClear = false;
+							break;
+						}
+					}
+					if(!isAreaClear) break;
+				}
+				if(!isAreaClear) break;
+			}
+
+			if(isAreaClear) {
+				shouldTeleport = true;
+				break;
+			}else {
+				// Adjust coordinates and try again
+				tpX += (rand.nextDouble() - 0.5D) * 16.0D; // Random offset
+				tpY += (rand.nextDouble() - 0.5D) * 8.0D;
+				tpZ += (rand.nextDouble() - 0.5D) * 16.0D;
+			}
+		}
+
+		if(!shouldTeleport) {
+			// Reset to original position if no valid spot is found
+			posX = originalX;
+			posY = originalY;
+			posZ = originalZ;
+			return false;
+		}
+
+		// Play teleportation effects
+		int particles = 4096;
+		for(int j = 0; j < particles; j++) {
+			double progress = (double) j / ((double) particles - 1.0D);
+			float offsetX = (rand.nextFloat() - 0.5F) * 10.2F;
+			float offsetY = (rand.nextFloat() - 0.5F) * 10.2F;
+			float offsetZ = (rand.nextFloat() - 0.5F) * 10.2F;
+			double particleX = originalX + (posX - originalX) * progress + (rand.nextDouble() - 0.5D) * (double) width * 2.0D;
+			double particleY = originalY + (posY - originalY) * progress + rand.nextDouble() * (double) height;
+			double particleZ = originalZ + (posZ - originalZ) * progress + (rand.nextDouble() - 0.5D) * (double) width * 2.0D;
+			worldObj.spawnParticle("cloud", particleX, particleY, particleZ, offsetX, offsetY, offsetZ);
+			worldObj.spawnParticle("portal", particleX, particleY, particleZ, offsetX, offsetY, offsetZ);
+		}
+		worldObj.playSoundEffect(originalX, originalY, originalZ, "mob.enderdragon.teleport", 1.0F, 1.0F);
+		worldObj.playSoundAtEntity(this, "mob.enderdragon.teleport", 1.0F, 1.0F);
+		return true;
 	}
 
 	private void updateDragonHealthData() {
@@ -339,6 +541,7 @@ public class EntityEnderDragon extends EntityDragonBase {
 				}
 				// If there are crystals nearby, choose two at random
 				if(!nearbyCrystals.isEmpty()) {
+					nearbyEntities.clear();
 					Collections.shuffle(nearbyCrystals); // Shuffle the list for randomness
 					// Clear previous crystals and select new ones
 					enderCrystals = new ArrayList<>();
@@ -422,26 +625,32 @@ public class EntityEnderDragon extends EntityDragonBase {
 		}
 	}
 
-	private void followPlayer() {
-		field_40163_ay = false;
-		if(rand.nextInt(2) == 0 && worldObj.playerEntities.size() > 0) {
-			playerEntity = (EntityPlayer) worldObj.playerEntities.get(rand.nextInt(worldObj.playerEntities.size()));
-		}else {
-			boolean flag = false;
-			do {
-				targetX = 0.0D;
-				ederdragonHealth = 70F + rand.nextFloat() * 50F;
-				targetZ = 0.0D;
-				targetX += rand.nextFloat() * 120F - 60F;
-				targetZ += rand.nextFloat() * 120F - 60F;
-				double d = posX - targetX;
-				double d1 = posY - ederdragonHealth;
-				double d2 = posZ - targetZ;
-				flag = d * d + d1 * d1 + d2 * d2 > 100D;
-			}while(!flag);
-			playerEntity = null;
+	// Handles random wardering, and following player statements
+	private void determineBehaviour() {
+		shouldChangeBehviour = false;
+		if(!DragonFightManager.isPerching) {
+			if(rand.nextInt(2) == 0 && worldObj.playerEntities.size() > 0) {
+				playerEntity = (EntityPlayer) worldObj.playerEntities.get(rand.nextInt(worldObj.playerEntities.size()));
+				DragonFightManager.isFollowingPlayer = true;
+			}else {
+				boolean validLocation = false;
+				DragonFightManager.isFollowingPlayer = false;
+				do {
+					targetX = 0.0D;
+					targetY = 70F + rand.nextFloat() * 50F;
+					targetZ = 0.0D;
+					targetX += rand.nextFloat() * 120F - 60F;
+					targetZ += rand.nextFloat() * 120F - 60F;
+					double d = posX - targetX;
+					double d1 = posY - targetY;
+					double d2 = posZ - targetZ;
+					validLocation = d * d + d1 * d1 + d2 * d2 > 50D;
+				}while(!validLocation);
+				playerEntity = null;
+			}
 		}
 	}
+	// END
 
 	private float func_40159_b(double d) {
 		for(; d >= 180D; d -= 360D) {
@@ -467,7 +676,7 @@ public class EntityEnderDragon extends EntityDragonBase {
 					if(j2 == 0) {
 						continue;
 					}
-					if(j2 == Block.OBSIDIAN.blockID || j2 == Block.torchWood.blockID || j2 == Block.END_STONE.blockID || j2 == Block.BEDROCK.blockID || j2 == Block.IRON_BARS.blockID) {
+					if(j2 == Block.OBSIDIAN.blockID || j2 == Block.TORCH.blockID || j2 == Block.END_STONE.blockID || j2 == Block.BEDROCK.blockID || j2 == Block.IRON_BARS.blockID) {
 						flag = true;
 					}else {
 						flag1 = true;
@@ -485,23 +694,19 @@ public class EntityEnderDragon extends EntityDragonBase {
 		return flag;
 	}
 
-	@Override
-	public void knockBack(Entity entity, int i, double d, double d1) {
-	}
-
-	public boolean shouldDamage(DragonPart dragonpart, DamageSource damagesource, int i) {
+	public boolean shouldDamage(DragonPart dragonpart, DamageSource damagesource, int damageAmount) {
 		if(dragonpart != dragonPartHead) {
-			i = i / 4 + 1;
+			damageAmount = (damageAmount / 2);
 		}
 		float f = (rotationYaw * 3.141593F) / 180F;
 		float f1 = MathHelper.sin(f);
 		float f2 = MathHelper.cos(f);
 		targetX = posX + (double) (f1 * 5F) + (double) ((rand.nextFloat() - 0.5F) * 2.0F);
-		ederdragonHealth = posY + (double) (rand.nextFloat() * 3F) + 1.0D;
+		targetY = posY + (double) (rand.nextFloat() * 3F) + 1.0D;
 		targetZ = (posZ - (double) (f2 * 5F)) + (double) ((rand.nextFloat() - 0.5F) * 2.0F);
 		playerEntity = null;
 		if((damagesource.getSourceOfDamage() instanceof EntityPlayer) || damagesource == DamageSource.explosion) {
-			func_40155_e(damagesource, i);
+			func_40155_e(damagesource, damageAmount);
 		}
 		return true;
 	}
@@ -535,7 +740,11 @@ public class EntityEnderDragon extends EntityDragonBase {
 					double newX = centerX + radius * Math.cos(angle);
 					double newZ = centerZ + radius * Math.sin(angle);
 					// Update the crystal's position
-					crystal.setPosition(newX, interpolatedY, newZ);
+
+					// crystal.setPosition(newX, interpolatedY, newZ);
+
+					crystal.setPosition(crystal.posX, interpolatedY, crystal.posZ);
+
 					// Prevent the crystal from taking damage
 					crystal.disableDamage = true;
 					crystal.isRespawnCrystal = true;
@@ -566,7 +775,6 @@ public class EntityEnderDragon extends EntityDragonBase {
 		if(!DragonFightManager.isRespawning) {
 			if(deathUpdateTimer < maxDeathUpdateTimer) {
 				deathUpdateTimer++;
-				DragonFightManager.isDying = true;
 			}
 			enderCrystals = null;
 			if(deathUpdateTimer >= 180 && deathUpdateTimer <= maxDeathUpdateTimer) {
@@ -620,8 +828,8 @@ public class EntityEnderDragon extends EntityDragonBase {
 	}
 
 	@Override
-	protected int getDropItemId() {
-		return Item.ELYTRA.id;
+	protected void dropFewItems(boolean flag, int i) {
+		dropItem(Item.ARROW.id, 1);
 	}
 
 	@Override
@@ -686,7 +894,7 @@ public class EntityEnderDragon extends EntityDragonBase {
 		if(heartsLife > 0) {
 			heartsLife--;
 		}
-		if(health <= 0) {
+		if(DragonFightManager.isDying) {
 			onDeathUpdate();
 		}
 		if(field_34905_c > 0) {
@@ -700,5 +908,10 @@ public class EntityEnderDragon extends EntityDragonBase {
 		prevRotationYaw = rotationYaw;
 		prevRotationPitch = rotationPitch;
 		Profiler.endSection();
+	}
+
+	@Override
+	public boolean canBePushed() {
+		return false;
 	}
 }
